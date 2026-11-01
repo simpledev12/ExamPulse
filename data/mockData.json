@@ -1,0 +1,1006 @@
+{
+  "siteMeta": {
+    "name": "ExamPulse",
+    "tagline": "Ace Your Board Exams with ExamPulse",
+    "subtitle": "Distraction-free chapter-wise notes, board-aligned Objective & Subjective Q&A, and timed Mock Tests crafted for Class 6 to 12 students.",
+    "founder": {
+      "name": "Khushnoor",
+      "role": "Founder & Lead Educator, ExamPulse",
+      "bio": "Hi, I am Khushnoor, passionate about making quality board-exam education accessible, structured, and stress-free for every student from Class 6 to 12. ExamPulse is built with a distraction-free 'Study Mode' philosophy so you can focus 100% on mastering concepts, practicing high-yield questions, and walking into your exams with confidence.",
+      "highlights": [
+        "100% Free & Structured Board Exam Curriculum",
+        "Chapter-Wise Concise Notes & Formula Sheets",
+        "Board-Pattern Objective MCQs & Step-by-Step Subjective Answers"
+      ]
+    }
+  },
+  "classes": [
+    {
+      "id": "class-6",
+      "name": "Class 6",
+      "level": "Middle Stage Foundation",
+      "boardTag": "NCERT / State Boards",
+      "studentsEnrolled": "14.2k+",
+      "subjectsCount": 4,
+      "chaptersCount": 42,
+      "accent": "from-blue-600 to-indigo-600",
+      "subjects": [
+        {
+          "id": "maths-6",
+          "name": "Mathematics",
+          "icon": "Calculator",
+          "code": "MAT-06",
+          "chaptersCount": 12,
+          "description": "Number System, Fractions, Decimals, Basic Algebra & Geometry",
+          "chapters": [
+            {
+              "id": "ch-knowing-numbers",
+              "number": 1,
+              "title": "Knowing Our Numbers",
+              "duration": "45 mins",
+              "weightage": "8 Marks",
+              "pdfFileName": "Class6_Maths_Ch1_Knowing_Our_Numbers_Notes.pdf",
+              "pdfPages": 11,
+              "pdfSize": "1.8 MB",
+              "notes": {
+                "summary": "Numbers help us count, compare, and measure quantities systematically. In this chapter, we explore Indian and International systems of numeration, place value charts, estimation rules, and Roman numerals.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Comparing Large Numbers",
+                    "body": "When comparing two numbers, the number with more digits is always greater. If the number of digits is equal, compare the leftmost digit (highest place value) first and proceed rightwards."
+                  },
+                  {
+                    "heading": "2. Indian vs. International System of Numeration",
+                    "body": "In the Indian system, commas are placed after 3 digits from the right, and then every 2 digits (Ones, Thousands, Lakhs, Crores). In the International system, commas are placed every 3 digits from the right (Ones, Thousands, Millions, Billions)."
+                  },
+                  {
+                    "heading": "3. Estimation & Rounding Off",
+                    "body": "To round off to the nearest ten, inspect the ones digit (if 5 or more, round up; otherwise round down). Apply the same principle for rounding to nearest hundred and thousand."
+                  }
+                ],
+                "formulas": [
+                  "1 Lakh = 100 Thousands = 1,00,000",
+                  "1 Crore = 100 Lakhs = 10 Millions = 1,00,00,000",
+                  "1 Million = 10 Lakhs = 1,000,000",
+                  "Roman Numerals: I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-6m-1",
+                  "question": "How many lakhs make 1 billion in the Indian system of numeration?",
+                  "options": ["100 Lakhs", "1,000 Lakhs", "10,000 Lakhs", "1,00,000 Lakhs"],
+                  "correctIndex": 2,
+                  "explanation": "1 Billion = 1,000,000,000 (9 zeros). Since 1 Lakh = 1,00,000 (5 zeros), 1 Billion / 1 Lakh = 10,000 Lakhs."
+                },
+                {
+                  "id": "q-6m-2",
+                  "question": "What is the predecessor of the smallest 6-digit number?",
+                  "options": ["99,999", "1,00,001", "9,99,999", "10,000"],
+                  "correctIndex": 0,
+                  "explanation": "The smallest 6-digit number is 1,00,000. Its predecessor is 1,00,000 - 1 = 99,999 (largest 5-digit number)."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-6m-1",
+                  "type": "Short Answer (2 Marks)",
+                  "question": "Insert commas suitably and write the number name of 87595762 in both Indian and International Systems of Numeration.",
+                  "solution": "Indian System: 8,75,95,762 — Eight crore seventy-five lakh ninety-five thousand seven hundred sixty-two.\n\nInternational System: 87,595,762 — Eighty-seven million five hundred ninety-five thousand seven hundred sixty-two."
+                },
+                {
+                  "id": "sq-6m-2",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "A book exhibition was held for four days in a school. The number of tickets sold at the counter on the first, second, third, and final day was respectively 1094, 1812, 2050, and 2751. Find the total number of tickets sold on all the four days.",
+                  "solution": "Step 1: Write down tickets sold on each day:\n• Day 1 = 1,094\n• Day 2 = 1,812\n• Day 3 = 2,050\n• Day 4 = 2,751\n\nStep 2: Add all four values together:\nTotal tickets sold = 1094 + 1812 + 2050 + 2751 = 7,707 tickets.\n\nConclusion: A total of 7,707 tickets were sold across all four days of the exhibition."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "science-6",
+          "name": "Science",
+          "icon": "FlaskConical",
+          "code": "SCI-06",
+          "chaptersCount": 11,
+          "description": "Components of Food, Sorting Materials, Living Organisms, Light & Magnets",
+          "chapters": [
+            {
+              "id": "ch-components-food",
+              "number": 1,
+              "title": "Components of Food",
+              "duration": "40 mins",
+              "weightage": "7 Marks",
+              "pdfFileName": "Class6_Science_Ch1_Components_Of_Food.pdf",
+              "pdfPages": 9,
+              "pdfSize": "1.5 MB",
+              "notes": {
+                "summary": "Our food contains essential chemical substances called nutrients: Carbohydrates, Proteins, Fats, Vitamins, and Minerals, along with dietary fibres (roughage) and water.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Energy-Giving vs. Body-Building Nutrients",
+                    "body": "Carbohydrates and Fats provide energy to our body (fats give more than double the energy per gram compared to carbohydrates). Proteins are required for growth and tissue repair, so they are called body-building foods."
+                  },
+                  {
+                    "heading": "2. Biochemical Tests for Nutrients",
+                    "body": "Starch test: Add 2–3 drops of dilute iodine solution; a blue-black colour confirms starch. Protein test: Add 2 drops of copper sulphate solution and 10 drops of caustic soda; a violet colour confirms protein."
+                  }
+                ],
+                "formulas": [
+                  "Starch + Dilute Iodine Solution → Blue-Black Colour",
+                  "Protein + CuSO4 (2 drops) + NaOH (10 drops) → Violet Colour",
+                  "Vitamin D Deficiency → Rickets | Iron Deficiency → Anaemia"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-6s-1",
+                  "question": "Which reagent turns blue-black in the presence of starch?",
+                  "options": ["Copper Sulphate", "Caustic Soda", "Dilute Iodine Solution", "Benedict's Solution"],
+                  "correctIndex": 2,
+                  "explanation": "Dilute iodine solution reacts with amylose in starch to produce a characteristic deep blue-black colour."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-6s-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "What are deficiency diseases? Name any three vitamin deficiency diseases along with their symptoms.",
+                  "solution": "Diseases that occur due to the lack of specific nutrients over a long period are called deficiency diseases.\n1. Vitamin A — Loss of vision / Night blindness (poor vision in dim light).\n2. Vitamin B1 — Beriberi (weak muscles and very little energy to work).\n3. Vitamin C — Scurvy (bleeding gums and wounds taking longer time to heal)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-7",
+      "name": "Class 7",
+      "level": "Middle Stage Core",
+      "boardTag": "NCERT / State Boards",
+      "studentsEnrolled": "16.8k+",
+      "subjectsCount": 4,
+      "chaptersCount": 45,
+      "accent": "from-indigo-600 to-violet-600",
+      "subjects": [
+        {
+          "id": "science-7",
+          "name": "Science",
+          "icon": "FlaskConical",
+          "code": "SCI-07",
+          "chaptersCount": 13,
+          "description": "Nutrition in Plants & Animals, Heat, Acids Bases & Salts, Electric Current",
+          "chapters": [
+            {
+              "id": "ch-nutrition-plants",
+              "number": 1,
+              "title": "Nutrition in Plants",
+              "duration": "50 mins",
+              "weightage": "8 Marks",
+              "pdfFileName": "Class7_Science_Ch1_Nutrition_In_Plants.pdf",
+              "pdfPages": 12,
+              "pdfSize": "2.1 MB",
+              "notes": {
+                "summary": "Green plants synthesize their own food via photosynthesis using chlorophyll, sunlight, water, and carbon dioxide. Non-green plants and fungi rely on heterotrophic modes like parasitic, saprotrophic, or symbiotic nutrition.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Photosynthesis Process",
+                    "body": "Leaves are the food factories of plants. Stomata surrounded by guard cells regulate gas exchange, while xylem vessels transport water and minerals from roots to leaves."
+                  },
+                  {
+                    "heading": "2. Symbiotic Relationship & Nitrogen Fixation",
+                    "body": "Rhizobium bacteria live in the root nodules of leguminous plants (gram, peas, moong) and convert atmospheric nitrogen into soluble nitrates in exchange for shelter and food."
+                  }
+                ],
+                "formulas": [
+                  "6CO2 + 6H2O —(Sunlight / Chlorophyll)→ C6H12O6 (Glucose) + 6O2",
+                  "Lichens = Symbiosis between Algae (prepares food) + Fungus (provides shelter & water)"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-7s-1",
+                  "question": "Cuscuta (Amarbel) is an example of:",
+                  "options": ["Autotroph", "Parasite", "Saprotroph", "Host"],
+                  "correctIndex": 1,
+                  "explanation": "Cuscuta lacks chlorophyll and derives ready-made nutrients directly from the host plant on which it climbs, making it a total stem parasite."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-7s-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "Why do farmers grow leguminous crops alternatively with cereal crops?",
+                  "solution": "Leguminous crops (like pulses, peas, and beans) harbour Rhizobium bacteria in their root nodules. These bacteria fix atmospheric nitrogen into soluble nitrogenous compounds in the soil, naturally replenishing soil fertility and reducing the need for chemical urea fertilizers."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-8",
+      "name": "Class 8",
+      "level": "Pre-High School Foundation",
+      "boardTag": "NCERT / State Boards",
+      "studentsEnrolled": "19.5k+",
+      "subjectsCount": 4,
+      "chaptersCount": 48,
+      "accent": "from-blue-700 to-indigo-700",
+      "subjects": [
+        {
+          "id": "maths-8",
+          "name": "Mathematics",
+          "icon": "Calculator",
+          "code": "MAT-08",
+          "chaptersCount": 13,
+          "description": "Rational Numbers, Linear Equations, Quadrilaterals, Mensuration & Algebraic Identities",
+          "chapters": [
+            {
+              "id": "ch-rational-numbers-8",
+              "number": 1,
+              "title": "Rational Numbers",
+              "duration": "50 mins",
+              "weightage": "8 Marks",
+              "pdfFileName": "Class8_Maths_Ch1_Rational_Numbers.pdf",
+              "pdfPages": 14,
+              "pdfSize": "2.0 MB",
+              "notes": {
+                "summary": "A rational number is any number that can be expressed in the form p/q where p and q are integers and q ≠ 0. Between any two given rational numbers, there exist infinitely many rational numbers.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Multiplicative Inverse (Reciprocal)",
+                    "body": "If p/q is a non-zero rational number, its multiplicative inverse is q/p such that (p/q) × (q/p) = 1. Zero has no reciprocal."
+                  }
+                ],
+                "formulas": [
+                  "Mean Method: A rational number between a and b is (a + b) / 2",
+                  "Distributivity: a(b - c) = ab - ac"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-8m-1",
+                  "question": "Which rational number does NOT have a reciprocal?",
+                  "options": ["1", "-1", "0", "1/2"],
+                  "correctIndex": 2,
+                  "explanation": "Division by zero is undefined (1/0 is undefined), so 0 does not have a multiplicative inverse (reciprocal)."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-8m-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "Find five rational numbers between 2/3 and 4/5.",
+                  "solution": "Step 1: Convert both fractions to a common denominator (LCM of 3 and 5 is 15):\n2/3 = 10/15 and 4/5 = 12/15.\nStep 2: Multiply numerator and denominator by 4 to create sufficient gap:\n10/15 = 40/60 and 12/15 = 48/60.\nStep 3: Five rational numbers between 40/60 and 48/60 are:\n41/60, 42/60, 43/60, 44/60, and 45/60."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-9",
+      "name": "Class 9",
+      "level": "Secondary Board Foundation",
+      "boardTag": "CBSE / BSEB / ICSE",
+      "studentsEnrolled": "28.4k+",
+      "subjectsCount": 4,
+      "chaptersCount": 52,
+      "accent": "from-indigo-700 to-blue-800",
+      "subjects": [
+        {
+          "id": "science-9",
+          "name": "Science (Physics, Chem, Bio)",
+          "icon": "Atom",
+          "code": "SCI-09",
+          "chaptersCount": 12,
+          "description": "Motion, Laws of Motion, Gravitation, Matter, Atoms & Molecules, The Fundamental Unit of Life",
+          "chapters": [
+            {
+              "id": "ch-motion-9",
+              "number": 1,
+              "title": "Motion & Equations of Kinematics",
+              "duration": "65 mins",
+              "weightage": "10 Marks",
+              "pdfFileName": "Class9_Science_Physics_Ch1_Motion_Notes.pdf",
+              "pdfPages": 18,
+              "pdfSize": "3.1 MB",
+              "notes": {
+                "summary": "Motion is the change in position of an object with respect to time and a reference point. We distinguish between scalar quantities (distance, speed) and vector quantities (displacement, velocity, acceleration) and derive the three equations of uniformly accelerated motion.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Distance vs. Displacement",
+                    "body": "Distance is the actual path length travelled by an object (always positive, scalar). Displacement is the shortest straight-line distance from initial to final position along with direction (can be positive, negative, or zero, vector)."
+                  },
+                  {
+                    "heading": "2. Graphical Representation of Motion",
+                    "body": "The slope of a Displacement-Time (s-t) graph gives velocity. The slope of a Velocity-Time (v-t) graph gives acceleration, and the area enclosed under a v-t graph gives the total displacement."
+                  }
+                ],
+                "formulas": [
+                  "First Equation of Motion: v = u + at",
+                  "Second Equation of Motion: s = ut + ½at²",
+                  "Third Equation of Motion: v² - u² = 2as",
+                  "Uniform Circular Motion Speed: v = 2πr / t"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-9s-1",
+                  "question": "What does the area under a Velocity-Time (v-t) graph represent?",
+                  "options": ["Acceleration", "Displacement", "Rate of change of momentum", "Average Force"],
+                  "correctIndex": 1,
+                  "explanation": "Since Displacement = Velocity × Time, the geometric area enclosed under a Velocity-Time graph gives the magnitude of displacement for that time interval."
+                },
+                {
+                  "id": "q-9s-2",
+                  "question": "A car accelerates uniformly from 18 km/h to 36 km/h in 5 seconds. What is its acceleration in m/s²?",
+                  "options": ["1 m/s²", "2 m/s²", "3.6 m/s²", "0.5 m/s²"],
+                  "correctIndex": 0,
+                  "explanation": "Convert speeds to m/s: u = 18 × (5/18) = 5 m/s; v = 36 × (5/18) = 10 m/s. Using a = (v - u)/t = (10 - 5)/5 = 1 m/s²."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-9s-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "Distinguish between uniform velocity and uniform acceleration. Can a body have zero velocity and still have non-zero acceleration? Give an example.",
+                  "solution": "Yes! When a ball is thrown vertically upwards, at the highest point of its trajectory its instantaneous velocity becomes zero (v = 0), but it continues to experience a constant downward acceleration due to gravity (g = 9.8 m/s²)."
+                },
+                {
+                  "id": "sq-9s-2",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "Derive the second equation of motion s = ut + ½at² graphically using a Velocity-Time graph.",
+                  "solution": "Consider a body moving with initial velocity 'u' at t = 0 and reaching final velocity 'v' at time 't' with uniform acceleration 'a'.\n\n1. On the v-t graph, let OA = u, BC = v, and OC = t.\n2. The distance 's' travelled in time 't' equals the area of trapezium OABC under the line AB.\n3. Area of trapezium OABC = Area of rectangle OADC + Area of triangle ABD\n   s = (OA × OC) + ½ × (AD × BD)\n4. Substitute OA = u, OC = AD = t, and BD = (v - u) = at (from v = u + at):\n   s = (u × t) + ½ × (t × at)\n   s = ut + ½at².\nHence proved."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-10",
+      "name": "Class 10",
+      "level": "Secondary Board Exam",
+      "boardTag": "Board Exam Special • High Priority",
+      "studentsEnrolled": "54.6k+",
+      "subjectsCount": 5,
+      "chaptersCount": 68,
+      "accent": "from-indigo-600 to-blue-600",
+      "subjects": [
+        {
+          "id": "science-10",
+          "name": "Science",
+          "icon": "FlaskConical",
+          "code": "SCI-10",
+          "chaptersCount": 13,
+          "description": "Chemical Reactions, Acids & Bases, Life Processes, Light Reflection & Refraction, Electricity",
+          "chapters": [
+            {
+              "id": "ch-chem-reactions-10",
+              "number": 1,
+              "title": "Chemical Reactions and Equations",
+              "duration": "60 mins",
+              "weightage": "8 Marks",
+              "pdfFileName": "Class10_Science_Ch1_Chemical_Reactions_Notes.pdf",
+              "pdfPages": 16,
+              "pdfSize": "2.8 MB",
+              "notes": {
+                "summary": "A chemical reaction involves the breaking and making of bonds between atoms to produce new substances with distinct properties. According to the Law of Conservation of Mass, every chemical equation must have an equal number of atoms of each element on both the reactant and product sides.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Five Core Types of Chemical Reactions",
+                    "body": "• Combination Reaction: Two or more reactants combine to form a single product (e.g., burning of coal, slaking of lime).\n• Decomposition Reaction: A single reactant breaks down into two or more simpler products via heat (thermal), light (photolytic), or electricity (electrolytic).\n• Displacement Reaction: A more reactive element displaces a less reactive element from its salt solution.\n• Double Displacement (Precipitation): Exchange of ions between two aqueous reactants.\n• Redox Reaction: Simultaneous oxidation (gain of O / loss of H) and reduction (loss of O / gain of H)."
+                  },
+                  {
+                    "heading": "2. Exothermic vs. Endothermic Processes",
+                    "body": "Reactions that release heat energy along with products (such as respiration, combustion of natural gas, and slaking of quicklime) are exothermic. Reactions that absorb energy are endothermic."
+                  },
+                  {
+                    "heading": "3. Corrosion and Rancidity in Everyday Life",
+                    "body": "Corrosion is the slow degradation of metals by moisture and atmospheric gases (rusting of iron, black coating of Ag2S on silver, green basic copper carbonate on copper). Rancidity is the aerial oxidation of fats and oils, prevented by flushing nitrogen gas in chips packets."
+                  }
+                ],
+                "formulas": [
+                  "Slaking of Lime: CaO(s) [Quicklime] + H2O(l) → Ca(OH)2(aq) [Slaked Lime] + Heat",
+                  "Whitewashing Shine: Ca(OH)2(aq) + CO2(g) → CaCO3(s) [Marble finish] + H2O(l)",
+                  "Thermal Decomposition of Ferrous Sulphate: 2FeSO4(s) —(Heat)→ Fe2O3(s) + SO2(g) + SO3(g)",
+                  "Photolytic Decomposition (Black & White Photography): 2AgBr(s) —(Sunlight)→ 2Ag(s) + Br2(g)"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-10s-1",
+                  "question": "Before burning in air, the magnesium ribbon is cleaned by rubbing with sandpaper to:",
+                  "options": [
+                    "Make the ribbon surface shiny for better reflection",
+                    "Remove the protective layer of basic magnesium carbonate / magnesium oxide",
+                    "Remove moisture absorbed from the atmosphere",
+                    "Convert metallic magnesium into magnesium nitride"
+                  ],
+                  "correctIndex": 1,
+                  "explanation": "Magnesium is a reactive metal that forms a slow passive layer of magnesium oxide / basic magnesium carbonate when exposed to air, which hinders smooth combustion."
+                },
+                {
+                  "id": "q-10s-2",
+                  "question": "During the electrolysis of water (2H2O → 2H2 + O2), the mole and volume ratio of Hydrogen gas to Oxygen gas collected at the electrodes is:",
+                  "options": ["1 : 2", "2 : 1", "8 : 1", "1 : 8"],
+                  "correctIndex": 1,
+                  "explanation": "2 moles of H2O decompose to yield 2 volumes of Hydrogen gas at the cathode and 1 volume of Oxygen gas at the anode, giving a 2 : 1 volume ratio."
+                },
+                {
+                  "id": "q-10s-3",
+                  "question": "When lead nitrate powder is heated strongly in a dry boiling tube, brown fumes are evolved. These brown fumes are of:",
+                  "options": ["Lead Oxide (PbO)", "Nitrous Oxide (N2O)", "Nitrogen Dioxide (NO2)", "Nitric Oxide (NO)"],
+                  "correctIndex": 2,
+                  "explanation": "2Pb(NO3)2(s) —(Heat)→ 2PbO(s) [Yellow residue] + 4NO2(g) [Brown fumes] + O2(g)."
+                },
+                {
+                  "id": "q-10s-4",
+                  "question": "In the reaction CuO + H2 → Cu + H2O, which substance acts as the reducing agent?",
+                  "options": ["CuO", "H2", "Cu", "H2O"],
+                  "correctIndex": 1,
+                  "explanation": "H2 gains oxygen to become H2O (it is oxidized) and removes oxygen from CuO, so H2 is the reducing agent."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-10s-1",
+                  "type": "Short Answer (2 Marks)",
+                  "question": "Why are potato chips bags flushed with Nitrogen gas by manufacturers?",
+                  "solution": "Oil and fat-containing food items undergo aerial oxidation when exposed to oxygen, turning rancid with a foul smell and taste. Nitrogen is an unreactive (inert) gas at room temperature; flushing bags with nitrogen displaces oxygen and prevents rancidity, keeping chips crisp and fresh."
+                },
+                {
+                  "id": "sq-10s-2",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "Why does the blue colour of copper sulphate solution fade and turn pale green when an iron nail is dipped in it for 20 minutes?",
+                  "solution": "Iron (Fe) lies higher than Copper (Cu) in the reactivity series of metals. When an iron nail is immersed in aqueous blue copper sulphate (CuSO4), iron displaces copper from its salt solution:\n\nFe(s) + CuSO4(aq) [Blue] → FeSO4(aq) [Pale Green] + Cu(s) [Reddish-Brown deposit]\n\nConsequently, a reddish-brown coating of metallic copper deposits on the iron nail and the solution turns pale green due to the formation of ferrous sulphate (FeSO4)."
+                },
+                {
+                  "id": "sq-10s-3",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "What is a decomposition reaction? Explain Thermal, Electrolytic, and Photolytic decomposition reactions with one balanced chemical equation for each.",
+                  "solution": "A reaction in which a single compound splits into two or more simpler substances under suitable energy conditions is called a decomposition reaction.\n\n1. Thermal Decomposition (Carried out by Heat):\nWhen calcium carbonate (limestone) is strongly heated, it decomposes into calcium oxide (quicklime) and carbon dioxide:\nCaCO3(s) —(Heat)→ CaO(s) + CO2(g)\n\n2. Electrolytic Decomposition (Carried out by Electric Current):\nWhen electric current is passed through acidified water, it decomposes into hydrogen and oxygen gas:\n2H2O(l) —(Electric Current)→ 2H2(g) [Cathode] + O2(g) [Anode]\n\n3. Photolytic Decomposition (Carried out by Sunlight):\nSilver chloride turns grey when exposed to sunlight because it decomposes into metallic silver and chlorine gas:\n2AgCl(s) [White] —(Sunlight)→ 2Ag(s) [Grey] + Cl2(g)"
+                }
+              ]
+            },
+            {
+              "id": "ch-light-10",
+              "number": 2,
+              "title": "Light — Reflection and Refraction",
+              "duration": "70 mins",
+              "weightage": "10 Marks",
+              "pdfFileName": "Class10_Science_Ch2_Light_Reflection_Refraction.pdf",
+              "pdfPages": 22,
+              "pdfSize": "3.6 MB",
+              "notes": {
+                "summary": "Light travels in straight lines and exhibits both reflection at polished surfaces (spherical mirrors) and refraction when passing obliquely between media of different optical densities (spherical lenses).",
+                "keyConcepts": [
+                  {
+                    "heading": "1. New Cartesian Sign Convention",
+                    "body": "All distances are measured from the Pole (P) of the mirror or Optical Centre (O) of the lens. Distances in the direction of incident light are taken as positive (+), and those opposite are negative (-). Therefore, focal length of a concave mirror/lens is negative (-), whereas for a convex mirror/lens it is positive (+)."
+                  },
+                  {
+                    "heading": "2. Snell's Law & Refractive Index",
+                    "body": "The ratio of the sine of the angle of incidence to the sine of the angle of refraction is constant for a given pair of media: sin(i)/sin(r) = n21. Absolute refractive index n = c / v."
+                  }
+                ],
+                "formulas": [
+                  "Mirror Formula: 1/v + 1/u = 1/f  (where f = R/2)",
+                  "Lens Formula: 1/v - 1/u = 1/f",
+                  "Magnification (Mirror): m = h'/h = -v/u | Magnification (Lens): m = h'/h = +v/u",
+                  "Power of a Lens: P = 1 / f(in metres) = 100 / f(in cm) [Unit: Dioptre (D)]"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-10l-1",
+                  "question": "Where should an object be placed in front of a convex lens to obtain a real, inverted image of the same size as the object?",
+                  "options": [
+                    "At the principal focus F1",
+                    "At twice the focal length (2F1)",
+                    "Between F1 and 2F1",
+                    "Between optical centre O and F1"
+                  ],
+                  "correctIndex": 1,
+                  "explanation": "When an object is placed at 2F1 of a convex lens, a real, inverted, and same-sized image (m = -1) is formed at 2F2 on the other side."
+                },
+                {
+                  "id": "q-10l-2",
+                  "question": "A doctor has prescribed a corrective lens of power +2.5 D. What is the focal length and nature of the lens?",
+                  "options": [
+                    "+40 cm, Convex Lens",
+                    "-40 cm, Concave Lens",
+                    "+25 cm, Convex Lens",
+                    "-25 cm, Concave Lens"
+                  ],
+                  "correctIndex": 0,
+                  "explanation": "f = 100 / P = 100 / (+2.5) = +40 cm. Positive focal length indicates a converging (convex) lens."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-10l-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "Why are convex mirrors preferred as rear-view wing mirrors in vehicles?",
+                  "solution": "Convex mirrors are preferred as rear-view mirrors because:\n1. They always produce an erect (upright), virtual, and diminished image regardless of the distance of the approaching vehicle.\n2. Being curved outwards, they provide a much wider field of view than a plane mirror of the same size, enabling the driver to monitor traffic across multiple lanes."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maths-10",
+          "name": "Mathematics",
+          "icon": "Calculator",
+          "code": "MAT-10",
+          "chaptersCount": 14,
+          "description": "Real Numbers, Polynomials, Quadratic Equations, Arithmetic Progressions, Trigonometry, Statistics",
+          "chapters": [
+            {
+              "id": "ch-trigonometry-10",
+              "number": 1,
+              "title": "Introduction to Trigonometry",
+              "duration": "65 mins",
+              "weightage": "12 Marks",
+              "pdfFileName": "Class10_Maths_Ch8_Trigonometry_Formula_Notes.pdf",
+              "pdfPages": 19,
+              "pdfSize": "2.9 MB",
+              "notes": {
+                "summary": "Trigonometry studies the relationship between the acute angles and side ratios of a right-angled triangle. Mastering standard angle values (0°, 30°, 45°, 60°, 90°) and the three Pythagorean identities is key to scoring full marks in Board Exams.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Six Trigonometric Ratios",
+                    "body": "For an acute angle θ in a right-angled triangle: sin θ = Perpendicular / Hypotenuse, cos θ = Base / Hypotenuse, tan θ = Perpendicular / Base = sin θ / cos θ. Their reciprocals are cosec θ, sec θ, and cot θ."
+                  },
+                  {
+                    "heading": "2. Three Fundamental Pythagorean Identities",
+                    "body": "1) sin²θ + cos²θ = 1\n2) 1 + tan²θ = sec²θ (for 0° ≤ θ < 90°)\n3) 1 + cot²θ = cosec²θ (for 0° < θ ≤ 90°)"
+                  }
+                ],
+                "formulas": [
+                  "sin²θ + cos²θ = 1  ⇒  sin²θ = 1 - cos²θ",
+                  "sec²θ - tan²θ = 1  ⇒  (sec θ - tan θ)(sec θ + tan θ) = 1",
+                  "cosec²θ - cot²θ = 1",
+                  "sin 30° = 1/2 | sin 45° = 1/√2 | sin 60° = √3/2 | tan 45° = 1"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-10m-1",
+                  "question": "If sin A = 3/5, where A is an acute angle, what is the value of tan A?",
+                  "options": ["4/5", "3/4", "4/3", "5/4"],
+                  "correctIndex": 1,
+                  "explanation": "By Pythagoras Theorem, Base = √(5² - 3²) = √(25 - 9) = 4. Therefore, tan A = Perpendicular / Base = 3/4."
+                },
+                {
+                  "id": "q-10m-2",
+                  "question": "The value of 9 sec²A - 9 tan²A is equal to:",
+                  "options": ["1", "9", "8", "0"],
+                  "correctIndex": 1,
+                  "explanation": "Factoring out 9 gives 9(sec²A - tan²A). Since sec²A - tan²A = 1, the expression equals 9 × 1 = 9."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-10m-1",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "Prove the identity: √((1 + sin A) / (1 - sin A)) = sec A + tan A.",
+                  "solution": "Step 1: Take LHS = √((1 + sin A) / (1 - sin A))\n\nStep 2: Multiply numerator and denominator inside the square root by the conjugate (1 + sin A):\nLHS = √(((1 + sin A)(1 + sin A)) / ((1 - sin A)(1 + sin A)))\nLHS = √((1 + sin A)² / (1 - sin²A))\n\nStep 3: Use the identity 1 - sin²A = cos²A:\nLHS = √((1 + sin A)² / cos²A)\nLHS = (1 + sin A) / cos A\n\nStep 4: Split into two terms:\nLHS = (1 / cos A) + (sin A / cos A) = sec A + tan A = RHS.\nHence Proved."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sst-10",
+          "name": "Social Science",
+          "icon": "Globe",
+          "code": "SST-10",
+          "chaptersCount": 15,
+          "description": "History (Nationalism in Europe & India), Geography, Political Science & Economics",
+          "chapters": [
+            {
+              "id": "ch-nationalism-india-10",
+              "number": 1,
+              "title": "Nationalism in India",
+              "duration": "55 mins",
+              "weightage": "10 Marks",
+              "pdfFileName": "Class10_History_Ch2_Nationalism_In_India.pdf",
+              "pdfPages": 15,
+              "pdfSize": "2.4 MB",
+              "notes": {
+                "summary": "Indian nationalism grew through shared anti-colonial struggles led by Mahatma Gandhi, notably the Satyagraha movements (Champaran, Kheda, Ahmedabad), the Non-Cooperation-Khilafat Movement (1920–22), and the Civil Disobedience Movement sparked by the historic Dandi Salt March (1930).",
+                "keyConcepts": [
+                  {
+                    "heading": "1. The Idea of Satyagraha",
+                    "body": "Satyagraha emphasized the power of truth and non-violent resistance. Mahatma Gandhi organized successful Satyagrahas in Champaran in Bihar (1917, against oppressive indigo plantation system), Kheda in Gujarat (1917, peasant revenue relaxation), and Ahmedabad (1918, cotton mill workers)."
+                  },
+                  {
+                    "heading": "2. Rowlatt Act (1919) & Jallianwala Bagh",
+                    "body": "The Imperial Legislative Council passed the Rowlatt Act allowing detention of political prisoners without trial for two years. On 13 April 1919, General Dyer opened fire on a peaceful Baisakhi gathering at Jallianwala Bagh in Amritsar."
+                  }
+                ],
+                "formulas": [
+                  "1917: Champaran Satyagraha (Bihar) & Kheda Satyagraha",
+                  "13 April 1919: Jallianwala Bagh Incident | Dec 1920: Nagpur Session adopts Non-Cooperation",
+                  "12 March – 6 April 1930: Dandi Salt March (240 miles from Sabarmati Ashram to Dandi)",
+                  "Sept 1932: Poona Pact signed between Mahatma Gandhi and Dr. B.R. Ambedkar"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-10sst-1",
+                  "question": "In which year did Mahatma Gandhi travel to Champaran in Bihar to inspire peasants to struggle against the oppressive plantation system?",
+                  "options": ["1915", "1917", "1919", "1921"],
+                  "correctIndex": 1,
+                  "explanation": "In 1917, Mahatma Gandhi went to Champaran in Bihar to support indigo farmers against the oppressive Tinkathia plantation system."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-10sst-1",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "Why did Mahatma Gandhi choose 'Salt' as a powerful symbol to unite the nation during the Civil Disobedience Movement?",
+                  "solution": "1. Universal Essential Commodity: Salt was consumed equally by both the rich and the poor, making it an everyday necessity across all caste, class, and religious lines.\n2. Unjust Colonial Monopoly: The British government imposed a heavy tax on salt and held a strict monopoly over its manufacture, which Mahatma Gandhi declared revealed the most oppressive face of British rule.\n3. Mass Mobilization: On 12 March 1930, Gandhi walked 240 miles from Sabarmati Ashram to the coastal town of Dandi with 78 trusted volunteers, ceremonially boiling seawater on 6 April 1930 to launch the Civil Disobedience Movement nationwide."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-11",
+      "name": "Class 11",
+      "level": "Senior Secondary Foundation",
+      "boardTag": "PCM / PCB / Commerce / Arts",
+      "studentsEnrolled": "24.1k+",
+      "subjectsCount": 4,
+      "chaptersCount": 56,
+      "accent": "from-blue-600 to-indigo-700",
+      "subjects": [
+        {
+          "id": "physics-11",
+          "name": "Physics",
+          "icon": "Atom",
+          "code": "PHY-11",
+          "chaptersCount": 14,
+          "description": "Units & Measurements, Kinematics, Laws of Motion, Work Energy & Power, Thermodynamics",
+          "chapters": [
+            {
+              "id": "ch-units-11",
+              "number": 1,
+              "title": "Units and Dimensional Analysis",
+              "duration": "55 mins",
+              "weightage": "7 Marks",
+              "pdfFileName": "Class11_Physics_Ch1_Units_Dimensions.pdf",
+              "pdfPages": 16,
+              "pdfSize": "2.5 MB",
+              "notes": {
+                "summary": "Dimensional analysis expresses any derived physical quantity in terms of the seven fundamental SI base quantities [M, L, T, A, K, mol, cd] and checks dimensional consistency of physical equations via the Principle of Homogeneity.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Principle of Homogeneity of Dimensions",
+                    "body": "Only physical quantities having identical dimensions can be added, subtracted, or equated. If X = A + BC, then [X] = [A] = [BC]."
+                  }
+                ],
+                "formulas": [
+                  "Force: [M¹ L¹ T⁻²] | Work / Energy / Torque: [M¹ L² T⁻²]",
+                  "Universal Gravitational Constant (G): [M⁻¹ L³ T⁻²]",
+                  "Planck's Constant (h): [M¹ L² T⁻¹] (Same as Angular Momentum)"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-11p-1",
+                  "question": "Which pair of physical quantities has identical dimensional formulas?",
+                  "options": [
+                    "Force and Momentum",
+                    "Impulse and Linear Momentum",
+                    "Stress and Strain",
+                    "Work and Power"
+                  ],
+                  "correctIndex": 1,
+                  "explanation": "Impulse (F × Δt) and Linear Momentum (m × v) both have the dimensional formula [M¹ L¹ T⁻¹]."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-11p-1",
+                  "type": "Short Answer (3 Marks)",
+                  "question": "In the van der Waals equation (P + a/V²)(V - b) = RT, find the dimensions of constants 'a' and 'b'.",
+                  "solution": "By the Principle of Homogeneity:\n1. Since 'b' is subtracted from volume V, [b] = [V] = [M⁰ L³ T⁰].\n2. Since a/V² is added to pressure P, [a / V²] = [P]\n   ⇒ [a] = [P] × [V²] = [M¹ L⁻¹ T⁻²] × [L⁶] = [M¹ L⁵ T⁻²]."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "class-12",
+      "name": "Class 12",
+      "level": "Senior Secondary Board Exam",
+      "boardTag": "Board Exam + JEE/NEET Prep",
+      "studentsEnrolled": "61.9k+",
+      "subjectsCount": 5,
+      "chaptersCount": 72,
+      "accent": "from-indigo-700 to-violet-700",
+      "subjects": [
+        {
+          "id": "physics-12",
+          "name": "Physics",
+          "icon": "Atom",
+          "code": "PHY-12",
+          "chaptersCount": 14,
+          "description": "Electrostatics, Current Electricity, Magnetism, Optics, Dual Nature & Semiconductors",
+          "chapters": [
+            {
+              "id": "ch-electrostatics-12",
+              "number": 1,
+              "title": "Electric Charges and Fields",
+              "duration": "75 mins",
+              "weightage": "9 Marks",
+              "pdfFileName": "Class12_Physics_Ch1_Electric_Charges_Fields.pdf",
+              "pdfPages": 24,
+              "pdfSize": "4.1 MB",
+              "notes": {
+                "summary": "Electrostatics deals with forces, fields, and potentials arising from stationary electric charges. Key board derivations include Electric Field on Axial and Equatorial lines of an Electric Dipole and applications of Gauss's Law.",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Quantization & Conservation of Charge",
+                    "body": "Total charge on any body is always an integral multiple of the basic elementary charge: q = ±ne, where e = 1.6 × 10⁻¹⁹ C."
+                  },
+                  {
+                    "heading": "2. Gauss's Law in Electrostatics",
+                    "body": "The total electric flux Φ_E through any closed Gaussian surface in free space is equal to 1/ε₀ times the net electric charge enclosed within the surface: Φ_E = ∮ E · dA = q_enclosed / ε₀."
+                  }
+                ],
+                "formulas": [
+                  "Coulomb's Law: F = (1 / 4πε₀) · (|q₁q₂| / r²)  where 1/4πε₀ = 9 × 10⁹ N·m²/C²",
+                  "Dipole Axial Field: E_axial = (1 / 4πε₀) · (2p / r³) | Equatorial: E_eq = (1 / 4πε₀) · (p / r³)",
+                  "Torque on Dipole in Uniform Field: τ = p × E = pE sin θ",
+                  "Gauss's Law: Φ_E = q_enclosed / ε₀"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-12p-1",
+                  "question": "For a short electric dipole, the ratio of electric field intensity at a point on the axial line to a point at the same distance on the equatorial line is:",
+                  "options": ["1 : 2", "2 : 1", "4 : 1", "1 : 1"],
+                  "correctIndex": 1,
+                  "explanation": "For a short dipole (r >> a), E_axial = 2kp/r³ and E_equatorial = kp/r³. Therefore, E_axial : E_equatorial = 2 : 1."
+                },
+                {
+                  "id": "q-12p-2",
+                  "question": "An electric dipole of dipole moment p is placed inside a closed cube of side L. What is the net electric flux emerging through the cube?",
+                  "options": ["p / ε₀", "2q / ε₀", "Zero", "q / 6ε₀"],
+                  "correctIndex": 2,
+                  "explanation": "An electric dipole consists of two equal and opposite charges (+q and -q), so the net enclosed charge q_enclosed = +q - q = 0. By Gauss's Law, Φ = 0."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-12p-1",
+                  "type": "Short Answer (2 Marks)",
+                  "question": "Why can two electrostatic field lines never intersect each other?",
+                  "solution": "The tangent drawn at any point on an electric field line gives the direction of the net electric field intensity at that point. If two field lines intersected, there would be two tangents—and hence two distinct directions of the net electric field—at the single point of intersection, which is physically impossible."
+                },
+                {
+                  "id": "sq-12p-2",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "State Gauss's Law in electrostatics. Using this law, derive an expression for the electric field due to an infinitely long straight uniformly charged wire of linear charge density λ.",
+                  "solution": "Statement: The total electric flux through any closed surface in free space is 1/ε₀ times the net charge enclosed by that surface: Φ_E = ∮ E · dS = q_in / ε₀.\n\nDerivation:\n1. Consider an infinitely long thin straight wire with uniform linear charge density λ (charge per unit length).\n2. By symmetry, the electric field E points radially outward and has the same magnitude at all points at radial distance 'r'.\n3. Construct a coaxial cylindrical Gaussian surface of radius 'r' and length 'l'.\n4. For the two flat circular caps, E is perpendicular to dS (θ = 90°), so flux through caps = 0.\n5. For the curved cylindrical surface, E is parallel to dS (θ = 0°):\n   Φ_E = E × (Area of curved surface) = E × (2πrl).\n6. Charge enclosed inside cylinder: q_in = λl.\n7. Applying Gauss's Law:\n   E(2πrl) = λl / ε₀  ⇒  E = λ / (2πrε₀).\nHence derived."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maths-12",
+          "name": "Mathematics",
+          "icon": "Calculator",
+          "code": "MAT-12",
+          "chaptersCount": 13,
+          "description": "Relations & Functions, Matrices, Determinants, Continuity & Differentiability, Integrals, Vectors",
+          "chapters": [
+            {
+              "id": "ch-calculus-12",
+              "number": 1,
+              "title": "Continuity and Differentiability",
+              "duration": "70 mins",
+              "weightage": "10 Marks",
+              "pdfFileName": "Class12_Maths_Ch5_Continuity_Differentiability.pdf",
+              "pdfPages": 21,
+              "pdfSize": "3.4 MB",
+              "notes": {
+                "summary": "A real function f is continuous at x = c if Left Hand Limit (LHL) = Right Hand Limit (RHL) = f(c). Every differentiable function is continuous, though the converse is not necessarily true (e.g., f(x) = |x| at x = 0).",
+                "keyConcepts": [
+                  {
+                    "heading": "1. Chain Rule & Logarithmic Differentiation",
+                    "body": "For composite functions y = f(g(x)), dy/dx = f'(g(x)) · g'(x). For functions of the form y = [u(x)]^[v(x)], take natural logarithm (ln) on both sides before differentiating."
+                  }
+                ],
+                "formulas": [
+                  "Continuity at x = c: lim(x→c⁻) f(x) = lim(x→c⁺) f(x) = f(c)",
+                  "d/dx (sin⁻¹x) = 1 / √(1 - x²) | d/dx (tan⁻¹x) = 1 / (1 + x²)",
+                  "d/dx (e^x) = e^x | d/dx (ln x) = 1/x"
+                ]
+              },
+              "objectiveQuestions": [
+                {
+                  "id": "q-12m-1",
+                  "question": "If y = log(sin(e^x)), then dy/dx is equal to:",
+                  "options": ["cot(e^x)", "e^x cot(e^x)", "e^x tan(e^x)", "cos(e^x) / e^x"],
+                  "correctIndex": 1,
+                  "explanation": "By the Chain Rule: dy/dx = (1 / sin(e^x)) · cos(e^x) · e^x = e^x cot(e^x)."
+                }
+              ],
+              "subjectiveQuestions": [
+                {
+                  "id": "sq-12m-1",
+                  "type": "Long Answer (5 Marks)",
+                  "question": "If y = x^x, find dy/dx using logarithmic differentiation.",
+                  "solution": "Step 1: Given y = x^x (for x > 0).\nStep 2: Take natural logarithm (log_e) on both sides:\nlog y = log(x^x) = x · log x\nStep 3: Differentiate both sides with respect to x using the Product Rule:\n(1/y) · (dy/dx) = x · (1/x) + (log x) · 1\n(1/y) · (dy/dx) = 1 + log x\nStep 4: Multiply both sides by y = x^x:\ndy/dx = x^x (1 + log x)."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mockTests": [
+    {
+      "id": "test-board-10-science",
+      "title": "Class 10 Science — Full Board Pattern Mock Test",
+      "classLabel": "Class 10",
+      "subject": "Science (Physics, Chemistry & Biology)",
+      "durationSeconds": 900,
+      "totalMarks": 20,
+      "marksPerCorrect": 4,
+      "negativeMarks": 0,
+      "questions": [
+        {
+          "id": "mt-1",
+          "section": "Chemistry",
+          "question": "Which of the following reactions represents an endothermic process?",
+          "options": [
+            "Burning of natural gas (methane) in air",
+            "Respiration in human cells",
+            "Thermal decomposition of calcium carbonate (limestone)",
+            "Dilution of concentrated sulphuric acid with water"
+          ],
+          "correctIndex": 2,
+          "explanation": "Decomposition of limestone (CaCO3 → CaO + CO2) requires continuous absorption of heat energy, making it an endothermic reaction."
+        },
+        {
+          "id": "mt-2",
+          "section": "Physics",
+          "question": "An object is placed at a distance of 20 cm in front of a concave mirror of focal length 10 cm. Where will the image be formed?",
+          "options": [
+            "At infinity",
+            "At 20 cm in front of the mirror (at Centre of Curvature C)",
+            "At 10 cm behind the mirror",
+            "Between Focus F and Pole P"
+          ],
+          "correctIndex": 1,
+          "explanation": "Since f = 10 cm, the Centre of Curvature C is at R = 2f = 20 cm. An object at C forms a real, inverted, same-sized image right at C (20 cm in front of the mirror)."
+        },
+        {
+          "id": "mt-3",
+          "section": "Biology",
+          "question": "In human beings, the breakdown of pyruvate to give carbon dioxide, water, and abundant ATP energy takes place in the:",
+          "options": [
+            "Cytoplasm",
+            "Chloroplast",
+            "Mitochondria",
+            "Ribosome"
+          ],
+          "correctIndex": 2,
+          "explanation": "Aerobic breakdown of 3-carbon pyruvate into CO2, H2O, and 38 ATP molecules via the Krebs cycle takes place inside the Mitochondria."
+        },
+        {
+          "id": "mt-4",
+          "section": "Physics",
+          "question": "If the length of a cylindrical metallic wire is doubled by stretching it while keeping its volume constant, its electrical resistance becomes:",
+          "options": [
+            "Double (2R)",
+            "Half (R/2)",
+            "Four times (4R)",
+            "Unchanged (R)"
+          ],
+          "correctIndex": 2,
+          "explanation": "When stretched at constant volume, doubling length (L' = 2L) halves the cross-sectional area (A' = A/2). Thus R' = ρ(2L)/(A/2) = 4(ρL/A) = 4R."
+        },
+        {
+          "id": "mt-5",
+          "section": "Chemistry",
+          "question": "An aqueous solution turns red litmus solution blue. Excess addition of which of the following solutions would reverse the change?",
+          "options": [
+            "Baking powder solution",
+            "Lime water",
+            "Ammonium hydroxide solution",
+            "Hydrochloric acid (HCl)"
+          ],
+          "correctIndex": 3,
+          "explanation": "Turning red litmus blue indicates a basic solution. Adding excess Hydrochloric acid (HCl) neutralizes the base and makes the medium acidic, turning blue litmus back to red."
+        }
+      ]
+    },
+    {
+      "id": "test-board-12-pcm",
+      "title": "Class 12 Physics & Maths — High-Yield Board Booster",
+      "classLabel": "Class 12",
+      "subject": "Physics & Mathematics",
+      "durationSeconds": 900,
+      "totalMarks": 20,
+      "marksPerCorrect": 4,
+      "negativeMarks": 0,
+      "questions": [
+        {
+          "id": "mt12-1",
+          "section": "Physics",
+          "question": "The SI unit of electric flux (Φ_E) is:",
+          "options": [
+            "Newton / Coulomb",
+            "Newton · metre² / Coulomb",
+            "Volt · metre",
+            "Both B and C"
+          ],
+          "correctIndex": 3,
+          "explanation": "Electric flux Φ_E = E · A has units (N/C)·m² = N·m²/C, which is also equivalent to (V/m)·m = Volt·metre (V·m)."
+        },
+        {
+          "id": "mt12-2",
+          "section": "Mathematics",
+          "question": "If A is a square matrix of order 3 × 3 such that |A| = 5, then the value of |adj(A)| is:",
+          "options": ["5", "25", "125", "15"],
+          "correctIndex": 1,
+          "explanation": "For a square matrix A of order n, |adj(A)| = |A|^(n-1). Here n = 3 and |A| = 5, so |adj(A)| = 5^(3-1) = 5² = 25."
+        },
+        {
+          "id": "mt12-3",
+          "section": "Physics",
+          "question": "Kirchhoff's First Law (Junction Rule, ΣI = 0) at an electrical junction is based on the law of conservation of:",
+          "options": [
+            "Energy",
+            "Electric Charge",
+            "Linear Momentum",
+            "Angular Momentum"
+          ],
+          "correctIndex": 1,
+          "explanation": "Kirchhoff's Current Law (Junction Rule) states that total current entering a junction equals total current leaving it, which follows from the conservation of electric charge."
+        },
+        {
+          "id": "mt12-4",
+          "section": "Mathematics",
+          "question": "The derivative of sin⁻¹(x) + cos⁻¹(x) with respect to x (for x ∈ [-1, 1]) is:",
+          "options": ["1", "π / 2", "0", "2 / √(1 - x²)"],
+          "correctIndex": 2,
+          "explanation": "Since sin⁻¹(x) + cos⁻¹(x) = π/2 (a constant) for all x ∈ [-1, 1], its derivative with respect to x is 0."
+        },
+        {
+          "id": "mt12-5",
+          "section": "Physics",
+          "question": "When monochromatic light passes from air into a glass slab of refractive index 1.5, which quantity remains unchanged?",
+          "options": [
+            "Wavelength",
+            "Speed of light",
+            "Frequency",
+            "Both Speed and Wavelength"
+          ],
+          "correctIndex": 2,
+          "explanation": "Frequency is an intrinsic property of the source of light and remains invariant during refraction from one medium to another."
+        }
+      ]
+    }
+  ]
+}
