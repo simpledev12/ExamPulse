@@ -8,15 +8,13 @@ async function bootExamPulse() {
   const res = await fetch('./data/mockData.json');
   const mockData = await res.json();
 
-  // Inject Class 9 Maths BSEB Chapter 14 Statistics (Hindi + English Notes, 15 MCQs, 15 Subjective Q&As)
-  mockData.classes.forEach(cls => {
-    if (cls.id === 'class-9') {
-      cls.boardTag = 'BSEB / CBSE • Hindi + English';
-      const others = cls.subjects.filter(s => s.id !== 'maths-9');
-      cls.subjects = [BSEB_CLASS9_MATHS_SUBJECT, ...others];
-      cls.subjectsCount = cls.subjects.length;
-    }
-  });
+  // Inject BSEB Class 9 Maths Chapter 14 Statistics (Hindi + English) into Class 9
+  const cls9 = mockData.classes.find(c => c.id === 'class-9');
+  if (cls9) {
+    cls9.boardTag = 'BSEB / CBSE • Hindi + English';
+    cls9.subjects = [BSEB_CLASS9_MATHS_SUBJECT, ...cls9.subjects.filter(s => s.id !== 'maths-9')];
+    cls9.subjectsCount = cls9.subjects.length;
+  }
 
   const state = {
     activePage: 'home',
@@ -418,14 +416,14 @@ async function bootExamPulse() {
               <div class="flex items-start gap-3.5">
                 <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-indigo-600 text-white font-bold shadow-sm">PDF</div>
                 <div>
-                  <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Official Chapter Notes &amp; Textbook Companion File</span>
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Official Textbook Companion &amp; Study Material File</span>
                   <h3 class="text-base font-bold text-slate-900 dark:text-white">${ch.pdfFileName}</h3>
                   <p class="text-xs text-slate-500 dark:text-slate-400">${ch.pdfPages} Pages • ${ch.pdfSize} • Verified Board Revision Handout</p>
                 </div>
               </div>
               <div class="flex flex-wrap items-center gap-2">
-                <a href="./public/notes/Class9_Maths_BSEB_Ch14_Statistics.md" download="Class9_Maths_BSEB_Ch14_Statistics_Notes.md" class="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white hover:bg-indigo-700">
-                  <span>⬇ Download Notes File</span>
+                <a href="./public/notes/Class9_Maths_BSEB_Ch14_Statistics.md" download="Class9_Maths_BSEB_Ch14_Statistics_Notes.md" class="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700">
+                  <span>⬇ Download Chapter Notes File</span>
                 </a>
                 <button type="button" id="toggle-pdf-preview-btn" class="inline-flex items-center gap-1.5 rounded-xl border border-indigo-300 bg-white px-3.5 py-2 text-xs font-bold text-indigo-700 hover:bg-indigo-50 dark:border-indigo-800 dark:bg-slate-900 dark:text-indigo-300">
                   <span>${state.pdfExpanded ? 'Hide PDF Reader' : 'Preview PDF Reader'}</span>
@@ -436,7 +434,7 @@ async function bootExamPulse() {
               <div class="mt-4 rounded-xl border border-slate-300 bg-white p-6 text-slate-800 shadow-inner dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200">
                 <div class="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 text-xs text-slate-500 dark:border-slate-800">
                   <span class="font-bold text-indigo-700 dark:text-indigo-300">📄 ${ch.pdfFileName} (Full Chapter Textbook Companion &amp; Formula Handout)</span>
-                  <button type="button" id="print-chapter-pdf-btn" class="rounded-lg border border-slate-300 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">🖨️ Print / Save PDF</button>
+                  <button type="button" id="print-chapter-pdf-btn" class="rounded-lg border border-slate-300 bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">🖨️ Print / Save as PDF</button>
                 </div>
                 <div class="max-h-96 overflow-y-auto space-y-3 pr-2 text-xs sm:text-sm leading-relaxed">
                   <p class="font-bold text-base text-slate-900 dark:text-white">${ch.title} — Complete Textbook Reference</p>
@@ -459,7 +457,7 @@ async function bootExamPulse() {
             <div class="mt-6 space-y-4">${conceptsHtml}</div>
             ${formulasHtml ? `
               <div class="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-900/50 dark:bg-amber-950/20">
-                <div class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">✨ Important Board Formulas, Equations &amp; Rules (महत्वपूर्ण सूत्र)</div>
+                <div class="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">✨ Important Board Formulas, Equations &amp; Key Rules (महत्वपूर्ण सूत्र)</div>
                 <ul class="mt-3 space-y-2 text-sm font-medium text-slate-800 dark:text-slate-200">${formulasHtml}</ul>
               </div>
             ` : ''}
@@ -523,7 +521,7 @@ async function bootExamPulse() {
             </div>
             ${isRevealed ? `
               <div class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs leading-relaxed text-emerald-950 sm:text-sm dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200">
-                <p class="font-bold">सही विकल्प (Correct Option): ${String.fromCharCode(65 + mcq.correctIndex)} (${mcq.options[mcq.correctIndex]})</p>
+                <p class="font-bold">सही उत्तर (Correct Option): ${String.fromCharCode(65 + mcq.correctIndex)} (${mcq.options[mcq.correctIndex]})</p>
                 <p class="mt-1">${mcq.explanation}</p>
               </div>
             ` : ''}
@@ -542,16 +540,16 @@ async function bootExamPulse() {
                 <span class="rounded-lg bg-purple-50 px-2.5 py-1 text-xs font-bold text-purple-700 dark:bg-purple-950/80 dark:text-purple-300">${sq.type}</span>
                 <span class="text-xs font-semibold text-slate-400">Board Subjective Q#${idx + 1}</span>
               </div>
-              <h3 class="mt-3 whitespace-pre-line text-base font-bold text-slate-900 sm:text-lg dark:text-white">${sq.question}</h3>
+              <h3 class="mt-3 text-base font-bold text-slate-900 sm:text-lg dark:text-white">${sq.question}</h3>
               <div class="mt-4">
                 <button type="button" data-toggle-subj="${sq.id}" class="toggle-subj-btn inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-slate-800 dark:text-slate-200">
-                  <span>${isOpen ? 'Hide Solution (हल छुपाएँ) ▲' : 'View Solution (पूरा हल देखें) ▼'}</span>
+                  <span>${isOpen ? 'Hide Solution ▲' : 'View Solution (हल देखें) ▼'}</span>
                 </button>
               </div>
             </div>
             ${isOpen ? `
               <div class="border-t border-slate-200 bg-indigo-50/40 px-6 py-5 dark:border-slate-800 dark:bg-indigo-950/20">
-                <p class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Model Board Solution (आदर्श उत्तर / हल):</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Model Board Solution (उत्तर / हल):</p>
                 <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-800 dark:text-slate-200">${sq.solution}</p>
               </div>
             ` : ''}
