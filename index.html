@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExamPulse — Ace Your Board Exams (Class 6 to 12)</title>
+  <title>ExamPulse — Ace Your Board Exams (Class 6 to 12 • BSEB &amp; CBSE)</title>
+  <meta name="description" content="ExamPulse — Distraction-free Class 6 to 12 Board Exam preparation platform featuring BSEB Class 9 Maths (Ch 1–6 &amp; 12–15), 50 HOTS Subjective Q&amp;A, Objective MCQs, and Timed Mock Tests." />
+  <link rel="manifest" href="./public/manifest.json" />
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script>
     tailwind.config = {
@@ -11,19 +13,31 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'Poppins', 'system-ui', 'sans-serif'],
-            display: ['Poppins', 'Inter', 'system-ui', 'sans-serif']
+            sans: ['Inter', 'Noto Sans Devanagari', 'Poppins', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'Noto Sans Devanagari', 'Inter', 'system-ui', 'sans-serif']
           }
         }
       }
     };
   </script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -177,10 +191,10 @@
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Board Exam Shortcuts</h3>
           <ul class="mt-3 space-y-2 text-sm">
+            <li><button type="button" data-class-jump="class-9" class="footer-class-link hover:text-indigo-600 dark:hover:text-indigo-400">Class 9 BSEB Maths (Ch 1–6 &amp; 12–15) →</button></li>
+            <li><a href="./class-9-math-subjective-50.html" class="hover:text-indigo-600 dark:hover:text-indigo-400">Class 9 Maths 50 HOTS Printable Sheet →</a></li>
             <li><button type="button" data-class-jump="class-10" class="footer-class-link hover:text-indigo-600 dark:hover:text-indigo-400">Class 10 Board Study Material →</button></li>
             <li><button type="button" data-class-jump="class-12" class="footer-class-link hover:text-indigo-600 dark:hover:text-indigo-400">Class 12 PCM / PCB Notes &amp; Q&amp;A →</button></li>
-            <li><button type="button" data-class-jump="class-9" class="footer-class-link hover:text-indigo-600 dark:hover:text-indigo-400">Class 9 Foundation Notes →</button></li>
-            <li><button type="button" data-class-jump="class-11" class="footer-class-link hover:text-indigo-600 dark:hover:text-indigo-400">Class 11 Core Concepts →</button></li>
           </ul>
         </div>
 
@@ -203,7 +217,7 @@
     </div>
   </footer>
 
-  <!-- Native ES Module Runtime for GitHub Pages / Static Hosting (React modules also in /components & /pages) -->
+  <!-- Native ES Module Runtime for GitHub Pages / Static Hosting -->
   <script type="module" src="./public/exampulse-live.js"></script>
 </body>
 </html>
