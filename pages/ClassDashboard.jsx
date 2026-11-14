@@ -31,7 +31,7 @@ export default function ClassDashboard({
   onBackToHome
 }) {
   const currentClass =
-    classes.find((c) => c.id === selectedClassId) || classes[4] || classes[0];
+    classes.find((c) => c.id === selectedClassId) || classes[3] || classes[0];
   const currentSubject =
     currentClass.subjects.find((s) => s.id === selectedSubjectId) ||
     currentClass.subjects[0];
@@ -135,6 +135,45 @@ export default function ClassDashboard({
         </div>
       </div>
 
+      {/* Special BSEB Class 9 Maths Study Hub Banner */}
+      {currentClass.id === 'class-9' && currentSubject?.id === 'maths-9' && (
+        <div className="mt-6 rounded-2xl border-2 border-indigo-200 bg-gradient-to-r from-indigo-50 via-blue-50 to-emerald-50 p-5 shadow-sm dark:border-indigo-800/70 dark:from-slate-900 dark:via-indigo-950/40 dark:to-slate-900">
+          <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
+            <div className="space-y-1.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-indigo-600 px-3 py-0.5 text-xs font-bold text-white">
+                  BSEB Class 9th Math • Complete Study Hub
+                </span>
+                <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  अध्याय 1–6 एवं 12–15 + 50 HOTS प्रश्न
+                </span>
+              </div>
+              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                कक्षा 9वीं गणित — 50 कठिन सब्जेक्टिव प्रश्न एवं हल (अध्याय 1–6 व 12–14) + सांख्यिकी व प्रायिकता नोट्स
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                सभी अध्यायों के नोट्स, वस्तुनिष्ठ प्रश्न (MCQs), चरणबद्ध सब्जेक्टिव हल तथा प्रिंट करने योग्य 50 HOTS प्रश्न बैंक यहाँ व्यवस्थित हैं।
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => onSelectChapter('ch-hots-50-9-bseb', 'subjective')}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-indigo-700"
+              >
+                <span>🔥 ऐप में 50 HOTS प्रश्न व हल खोलें</span>
+              </button>
+              <a
+                href="./class-9-math-subjective-50.html"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-300 bg-white px-4 py-2.5 text-xs font-bold text-indigo-700 shadow-sm hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-800 dark:text-indigo-200"
+              >
+                <span>🖨️ प्रिंट / PDF पेज (50 प्रश्न) ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Step 2: Chapter List for Selected Subject */}
       {currentSubject && (
         <div className="mt-10">
@@ -144,7 +183,7 @@ export default function ClassDashboard({
                 2. Chapters in {currentClass.name} {currentSubject.name}
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Click any chapter to open Notes, Objective MCQs, and Subjective Q&amp;A.
+                Click Notes, MCQs, or Subjective on any chapter to open it directly.
               </p>
             </div>
           </div>
@@ -175,7 +214,7 @@ export default function ClassDashboard({
                   <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
                     <span className="inline-flex items-center gap-1">
                       <FileText className="h-3.5 w-3.5 text-indigo-500" />
-                      Study Notes &amp; PDF ({ch.pdfPages} pages)
+                      Study Notes &amp; Formulas ({ch.notes.keyConcepts.length} Topics)
                     </span>
                     <span className="inline-flex items-center gap-1">
                       <HelpCircle className="h-3.5 w-3.5 text-indigo-500" />
@@ -192,10 +231,24 @@ export default function ClassDashboard({
                   <button
                     type="button"
                     onClick={() => onSelectChapter(ch.id, 'notes')}
-                    className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-700"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-700"
                   >
-                    <span>Open Chapter</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <span>📄 Notes</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onSelectChapter(ch.id, 'objective')}
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 transition-colors hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    <span>✅ MCQs ({ch.objectiveQuestions.length})</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onSelectChapter(ch.id, 'subjective')}
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-purple-200 bg-purple-50 px-3 py-2 text-xs font-bold text-purple-700 transition-colors hover:bg-purple-100 dark:border-purple-800 dark:bg-purple-950/60 dark:text-purple-300"
+                  >
+                    <span>📝 Subjective ({ch.subjectiveQuestions.length})</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>

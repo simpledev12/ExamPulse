@@ -1,20 +1,13 @@
 import { FOUNDER_PHOTO_URI, FOUNDER_SIGNATURE_URI } from '../data/founderAssets.js';
-import { BSEB_CLASS9_MATHS_SUBJECT } from '../data/bsebClass9Ch14.js';
+import { enrichExamPulseCurriculum } from '../data/bsebClass9MathsComplete.js';
 
 const FOUNDER_PHOTO_SRC = FOUNDER_PHOTO_URI;
 const FOUNDER_SIG_SRC = FOUNDER_SIGNATURE_URI;
 
 async function bootExamPulse() {
   const res = await fetch('./data/mockData.json');
-  const mockData = await res.json();
-
-  // Inject BSEB Class 9 Mathematics (Chapter 14: Statistics Hindi+English Notes, 15 MCQs, 15 Subjective Q&As)
-  const class9 = mockData.classes.find(c => c.id === 'class-9');
-  if (class9) {
-    class9.boardTag = 'BSEB / CBSE • Hindi + English';
-    class9.subjects = [BSEB_CLASS9_MATHS_SUBJECT, ...class9.subjects.filter(s => s.id !== 'maths-9')];
-    class9.subjectsCount = class9.subjects.length;
-  }
+  const rawMockData = await res.json();
+  const mockData = enrichExamPulseCurriculum(rawMockData);
 
   const state = {
     activePage: 'home',
@@ -28,6 +21,7 @@ async function bootExamPulse() {
     mcqSelections: {},
     mcqRevealed: {},
     subjectiveOpen: {},
+    allSubjectiveOpen: false,
     selectedTestId: mockData.mockTests[0].id,
     currentQuestionIdx: 0,
     testAnswers: {},
@@ -152,6 +146,7 @@ async function bootExamPulse() {
       const subPills = cls.subjects.slice(0, 3).map(s => `
         <span class="rounded-lg bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">${s.name}</span>
       `).join('');
+      const totalChapters = cls.subjects.reduce((acc, s) => acc + (s.chapters ? s.chapters.length : 0), 0);
       return `
         <button type="button" data-select-class="${cls.id}" class="class-card-btn group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500">
           <div>
@@ -166,7 +161,7 @@ async function bootExamPulse() {
             <div class="mt-4 flex flex-wrap gap-1.5">${subPills}</div>
           </div>
           <div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-3.5 text-xs font-bold text-indigo-600 dark:border-slate-800 dark:text-indigo-400">
-            <span>${cls.subjects.length} Subjects • ${cls.chaptersCount} Chapters</span>
+            <span>${cls.subjects.length} Subjects • ${totalChapters} Active Modules</span>
             <span class="transition-transform group-hover:translate-x-1">Explore →</span>
           </div>
         </button>
@@ -179,7 +174,7 @@ async function bootExamPulse() {
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-3xl text-center">
               <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-bold text-indigo-700 shadow-sm dark:border-indigo-800 dark:bg-indigo-950/80 dark:text-indigo-300">
-                <span>✨ Class 6 to 12 Board Exam Preparation Platform</span>
+                <span>✨ Class 6 to 12 Board Exam Preparation Platform (BSEB &amp; CBSE)</span>
               </div>
               <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">
                 Ace Your Board Exams with <span class="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-blue-400">ExamPulse</span>
@@ -187,7 +182,7 @@ async function bootExamPulse() {
               <p class="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
                 ${mockData.siteMeta.subtitle}
               </p>
-              <div class="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+              <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <button type="button" id="hero-start-btn" class="inline-flex items-center gap-2 rounded-2xl bg-indigo-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-600/25 transition-all hover:bg-indigo-700">
                   <span>Start Learning</span>
                   <span>→</span>
@@ -195,8 +190,21 @@ async function bootExamPulse() {
                 <button type="button" id="hero-mock-btn" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all hover:border-indigo-500 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
                   <span>⏱️ Take a Mock Test</span>
                 </button>
-                <button type="button" id="hero-bseb-ch14-btn" class="inline-flex items-center gap-2 rounded-2xl border-2 border-emerald-500 bg-emerald-50 px-5 py-3.5 text-sm font-extrabold text-emerald-800 shadow-sm transition-all hover:bg-emerald-100 dark:border-emerald-500/80 dark:bg-emerald-950/70 dark:text-emerald-200">
-                  <span>📘 Class 9 Maths (BSEB) Ch 14: सांख्यिकी (Hindi Notes + 30 Q&amp;A)</span>
+              </div>
+
+              <!-- Quick BSEB Class 9 Maths Hub Shortcuts -->
+              <div class="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+                <button type="button" id="hero-bseb-maths-btn" class="inline-flex items-center gap-2 rounded-xl border border-indigo-300 bg-indigo-50/90 px-4 py-2 text-xs font-bold text-indigo-800 shadow-sm transition-all hover:bg-indigo-100 dark:border-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-200">
+                  <span>📐 Class 9 Maths (BSEB): All Chapters (Ch 1–6 &amp; 12–15)</span>
+                </button>
+                <button type="button" id="hero-bseb-ch14-btn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400 bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-800 shadow-sm transition-all hover:bg-emerald-100 dark:border-emerald-600 dark:bg-emerald-950/70 dark:text-emerald-200">
+                  <span>📊 Ch 14: सांख्यिकी (Notes + 35 Q&amp;A)</span>
+                </button>
+                <button type="button" id="hero-bseb-ch15-btn" class="inline-flex items-center gap-2 rounded-xl border border-purple-400 bg-purple-50 px-4 py-2 text-xs font-bold text-purple-800 shadow-sm transition-all hover:bg-purple-100 dark:border-purple-600 dark:bg-purple-950/70 dark:text-purple-200">
+                  <span>🎲 Ch 15: प्रायिकता (Notes + Q&amp;A)</span>
+                </button>
+                <button type="button" id="hero-bseb-hots50-btn" class="inline-flex items-center gap-2 rounded-xl border border-amber-400 bg-amber-50 px-4 py-2 text-xs font-bold text-amber-900 shadow-sm transition-all hover:bg-amber-100 dark:border-amber-600 dark:bg-amber-950/70 dark:text-amber-200">
+                  <span>🔥 50 कठिन सब्जेक्टिव प्रश्न (HOTS Set)</span>
                 </button>
               </div>
 
@@ -243,7 +251,7 @@ async function bootExamPulse() {
                 <span class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Tab 1: Notes</span>
               </div>
               <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-white">1. Chapter-Wise Revision Notes &amp; PDFs</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Crisp, board-oriented revision notes with highlighted formulas, reaction sheets, theorems, and a built-in PDF viewer placeholder ready for CMS uploads.</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Crisp, board-oriented revision notes with highlighted formulas, reaction sheets, theorems, and downloadable chapter study material.</p>
             </div>
             <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <div class="flex items-center justify-between">
@@ -259,7 +267,7 @@ async function bootExamPulse() {
                 <span class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Tab 3 + Mock Test UI</span>
               </div>
               <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-white">3. Subjective Q&amp;A + Timed Mock Tests</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Master 2-mark, 3-mark, and 5-mark subjective derivations with accordion solutions, plus full-screen timed Mock Tests with question palettes.</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Master 2-mark, 3-mark, and 5-mark subjective derivations and HOTS problems with MathJax solutions, plus timed Mock Tests.</p>
             </div>
           </div>
         </section>
@@ -312,6 +320,33 @@ async function bootExamPulse() {
       `;
     }).join('');
 
+    const bsebSpecialBannerHtml = (currentClass.id === 'class-9' && currentSubject && currentSubject.id === 'maths-9') ? `
+      <div class="mt-6 rounded-2xl border-2 border-indigo-200 bg-gradient-to-r from-indigo-50 via-blue-50 to-emerald-50 p-5 shadow-sm dark:border-indigo-800/70 dark:from-slate-900 dark:via-indigo-950/40 dark:to-slate-900">
+        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
+          <div class="space-y-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-indigo-600 px-3 py-0.5 text-xs font-bold text-white">BSEB Class 9th Math • Complete Study Hub</span>
+              <span class="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">अध्याय 1–6 एवं 12–15 + 50 HOTS प्रश्न</span>
+            </div>
+            <h3 class="text-lg font-extrabold text-slate-900 dark:text-white">
+              कक्षा 9वीं गणित — 50 कठिन सब्जेक्टिव प्रश्न एवं हल (अध्याय 1–6 व 12–14) + सांख्यिकी व प्रायिकता नोट्स
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              सभी अध्यायों के नोट्स, वस्तुनिष्ठ प्रश्न (MCQs), चरणबद्ध सब्जेक्टिव हल तथा प्रिंट करने योग्य 50 HOTS प्रश्न बैंक यहाँ व्यवस्थित हैं।
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+            <button type="button" data-open-chapter="ch-hots-50-9-bseb" data-open-tab="subjective" class="open-chapter-btn inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-indigo-700">
+              <span>🔥 ऐप में 50 HOTS प्रश्न व हल खोलें</span>
+            </button>
+            <a href="./class-9-math-subjective-50.html" class="inline-flex items-center gap-1.5 rounded-xl border border-indigo-300 bg-white px-4 py-2.5 text-xs font-bold text-indigo-700 shadow-sm hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-800 dark:text-indigo-200">
+              <span>🖨️ प्रिंट / PDF पेज (50 प्रश्न) ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    ` : '';
+
     const chaptersHtml = (currentSubject ? currentSubject.chapters : []).map(ch => `
       <div class="flex flex-col justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-indigo-500 sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-900">
         <div class="space-y-1.5">
@@ -322,14 +357,20 @@ async function bootExamPulse() {
           </div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white">${ch.title}</h3>
           <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
-            <span>📄 Study Notes &amp; PDF (${ch.pdfPages} pages)</span>
+            <span>📄 Notes &amp; Formulas (${ch.notes.keyConcepts.length} Topics)</span>
             <span>✅ ${ch.objectiveQuestions.length} Objective MCQs</span>
             <span>📝 ${ch.subjectiveQuestions.length} Subjective Q&amp;A</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <button type="button" data-open-chapter="${ch.id}" class="open-chapter-btn inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-700">
-            <span>Open Chapter →</span>
+          <button type="button" data-open-chapter="${ch.id}" data-open-tab="notes" class="open-chapter-btn inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-700">
+            <span>📄 Notes</span>
+          </button>
+          <button type="button" data-open-chapter="${ch.id}" data-open-tab="objective" class="open-chapter-btn inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 transition-colors hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
+            <span>✅ MCQs (${ch.objectiveQuestions.length})</span>
+          </button>
+          <button type="button" data-open-chapter="${ch.id}" data-open-tab="subjective" class="open-chapter-btn inline-flex items-center gap-1.5 rounded-xl border border-purple-200 bg-purple-50 px-3 py-2 text-xs font-bold text-purple-700 transition-colors hover:bg-purple-100 dark:border-purple-800 dark:bg-purple-950/60 dark:text-purple-300">
+            <span>📝 Subjective (${ch.subjectiveQuestions.length})</span>
           </button>
         </div>
       </div>
@@ -358,9 +399,11 @@ async function bootExamPulse() {
           <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">${subjectsHtml}</div>
         </div>
 
+        ${bsebSpecialBannerHtml}
+
         <div class="mt-10">
           <h2 class="text-lg font-bold text-slate-900 dark:text-white">2. Chapters in ${currentClass.name} ${currentSubject ? currentSubject.name : ''}</h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Click any chapter to open Notes, Objective MCQs, and Subjective Q&amp;A.</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Click Notes, MCQs, or Subjective on any chapter to open it directly.</p>
           <div class="mt-4 space-y-3.5">${chaptersHtml}</div>
         </div>
       </div>
@@ -409,6 +452,10 @@ async function bootExamPulse() {
         <li class="rounded-xl bg-white/90 px-3.5 py-2 font-mono text-xs shadow-sm sm:text-sm dark:bg-slate-900">${f}</li>
       `).join('');
 
+      const downloadHref = ch.downloadUrl || './public/notes/Class9_Maths_BSEB_Ch14_Statistics.md';
+      const downloadAttr = downloadHref.endsWith('.md') ? `download="${ch.downloadName || 'Chapter_Notes.md'}"` : '';
+      const downloadLabel = downloadHref.includes('.html') ? '🖨️ Open Printable Question Sheet' : '⬇ Download Chapter File';
+
       tabContentHtml = `
         <div class="mt-6 space-y-6">
           <div class="rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 dark:border-indigo-900/60 dark:bg-indigo-950/30">
@@ -422,8 +469,8 @@ async function bootExamPulse() {
                 </div>
               </div>
               <div class="flex flex-wrap items-center gap-2">
-                <a href="./public/notes/Class9_Maths_BSEB_Ch14_Statistics.md" download="Class9_Maths_BSEB_Ch14_Statistics_Notes.md" class="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700">
-                  <span>⬇ Download Chapter File</span>
+                <a href="${downloadHref}" ${downloadAttr} class="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700">
+                  <span>${downloadLabel}</span>
                 </a>
                 <button type="button" id="toggle-pdf-preview-btn" class="inline-flex items-center gap-1.5 rounded-xl border border-indigo-300 bg-white px-3.5 py-2 text-xs font-bold text-indigo-700 hover:bg-indigo-50 dark:border-indigo-800 dark:bg-slate-900 dark:text-indigo-300">
                   <span>${state.pdfExpanded ? 'Hide PDF Reader' : 'Preview PDF Reader'}</span>
@@ -441,10 +488,10 @@ async function bootExamPulse() {
                   <p>${ch.notes.summary}</p>
                   <p class="font-bold text-indigo-600 dark:text-indigo-400">Included in this Chapter Module:</p>
                   <ul class="list-disc pl-5 space-y-1">
-                    <li><strong>${ch.notes.keyConcepts.length} Detailed Hindi + English Topics</strong> (प्रश्नावली 14.1 से 14.4 तक संपूर्ण थ्योरी एवं उदाहरण)</li>
-                    <li><strong>${(ch.notes.formulas || []).length} Key Board Formulas</strong> (परिसर, वर्ग-चिह्न, आयतचित्र, माध्य, माध्यक एवं बहुलक सूत्र)</li>
+                    <li><strong>${ch.notes.keyConcepts.length} Detailed Topics</strong> with definitions, rules &amp; examples</li>
+                    <li><strong>${(ch.notes.formulas || []).length} Key Board Formulas</strong></li>
                     <li><strong>${ch.objectiveQuestions.length} Objective Questions (MCQs)</strong> with Interactive Radio Buttons &amp; Explanations</li>
-                    <li><strong>${ch.subjectiveQuestions.length} Subjective Questions (Short &amp; Long Answer)</strong> with Step-by-Step Board Solutions</li>
+                    <li><strong>${ch.subjectiveQuestions.length} Subjective Questions (Short, Long &amp; HOTS)</strong> with Step-by-Step Board Solutions</li>
                   </ul>
                 </div>
               </div>
@@ -533,22 +580,50 @@ async function bootExamPulse() {
     } else {
       const subjHtml = ch.subjectiveQuestions.map((sq, idx) => {
         const isOpen = !!state.subjectiveOpen[sq.id];
+        let tableHtml = '';
+        if (sq.table && sq.table.headers && sq.table.rows) {
+          const ths = sq.table.headers.map(h => `<th class="border border-slate-300 bg-slate-100 px-3 py-1.5 text-center text-xs font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">${h}</th>`).join('');
+          const trs = sq.table.rows.map(r => `
+            <tr>
+              <th class="border border-slate-300 bg-slate-50 px-3 py-1.5 text-center text-xs font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-300">${r[0]}</th>
+              ${r.slice(1).map(c => `<td class="border border-slate-300 px-3 py-1.5 text-center text-xs text-slate-700 dark:border-slate-700 dark:text-slate-300">${c}</td>`).join('')}
+            </tr>
+          `).join('');
+          tableHtml = `
+            <div class="mt-3 overflow-x-auto">
+              <table class="w-full max-w-xl border-collapse rounded-lg overflow-hidden">
+                <thead><tr>${ths}</tr></thead>
+                <tbody>${trs}</tbody>
+              </table>
+            </div>
+          `;
+        }
+
+        const answerBadgeHtml = sq.answer ? `
+          <span class="rounded-lg bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300">
+            उत्तर: ${sq.answer}
+          </span>
+        ` : '';
+
         return `
           <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div class="p-6">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <span class="rounded-lg bg-purple-50 px-2.5 py-1 text-xs font-bold text-purple-700 dark:bg-purple-950/80 dark:text-purple-300">${sq.type}</span>
-                <span class="text-xs font-semibold text-slate-400">Subjective Q#${idx + 1}</span>
+                <span class="text-xs font-semibold text-slate-400">Subjective Q#${sq.qNo || (idx + 1)}</span>
               </div>
               <h3 class="mt-3 whitespace-pre-line text-base font-bold text-slate-900 sm:text-lg dark:text-white">${sq.question}</h3>
-              <div class="mt-4">
+              ${tableHtml}
+              <div class="mt-4 flex flex-wrap items-center gap-2.5">
                 <button type="button" data-toggle-subj="${sq.id}" class="toggle-subj-btn inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 dark:bg-slate-800 dark:text-slate-200">
                   <span>${isOpen ? 'Hide Solution (हल छुपाएँ) ▲' : 'View Solution (पूरा हल देखें) ▼'}</span>
                 </button>
+                ${isOpen ? answerBadgeHtml : ''}
               </div>
             </div>
             ${isOpen ? `
               <div class="border-t border-slate-200 bg-indigo-50/40 px-6 py-5 dark:border-slate-800 dark:bg-indigo-950/20">
+                ${sq.answer ? `<p class="mb-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">✓ संक्षिप्त उत्तर (Answer Key): ${sq.answer}</p>` : ''}
                 <p class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Model Board Solution (चरणबद्ध हल):</p>
                 <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-800 dark:text-slate-200">${sq.solution}</p>
               </div>
@@ -557,7 +632,27 @@ async function bootExamPulse() {
         `;
       }).join('');
 
-      tabContentHtml = `<div class="mt-6 space-y-4">${subjHtml}</div>`;
+      tabContentHtml = `
+        <div class="mt-6 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 dark:text-white">Subjective Questions &amp; Step-by-Step Solutions (${ch.subjectiveQuestions.length} Questions)</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Click "View Solution" on any question or toggle all solutions at once.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" id="toggle-all-subj-btn" class="rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700">
+                ${state.allSubjectiveOpen ? 'सभी हल छुपाएँ (Collapse All)' : 'सभी हल दिखाएँ (Expand All)'}
+              </button>
+              ${ch.downloadUrl && ch.downloadUrl.includes('.html') ? `
+                <a href="${ch.downloadUrl}" class="rounded-xl border border-indigo-300 bg-indigo-50 px-3.5 py-2 text-xs font-bold text-indigo-700 hover:bg-indigo-100 dark:border-indigo-800 dark:bg-slate-800 dark:text-indigo-300">
+                  🖨️ Printable Sheet ↗
+                </a>
+              ` : ''}
+            </div>
+          </div>
+          ${subjHtml}
+        </div>
+      `;
     }
 
     return `
@@ -769,14 +864,16 @@ async function bootExamPulse() {
 
   function updateHeaderAndGlobalUI() {
     const root = document.documentElement;
+    const moonEl = document.getElementById('theme-icon-moon');
+    const sunEl = document.getElementById('theme-icon-sun');
     if (state.darkMode) {
       root.classList.add('dark');
-      document.getElementById('theme-icon-moon').classList.add('hidden');
-      document.getElementById('theme-icon-sun').classList.remove('hidden');
+      if (moonEl) moonEl.classList.add('hidden');
+      if (sunEl) sunEl.classList.remove('hidden');
     } else {
       root.classList.remove('dark');
-      document.getElementById('theme-icon-moon').classList.remove('hidden');
-      document.getElementById('theme-icon-sun').classList.add('hidden');
+      if (moonEl) moonEl.classList.remove('hidden');
+      if (sunEl) sunEl.classList.add('hidden');
     }
 
     const studyBanner = document.getElementById('study-mode-banner');
@@ -785,15 +882,15 @@ async function bootExamPulse() {
     const mobileStudyStatus = document.getElementById('mobile-study-status');
 
     if (state.studyMode) {
-      studyBanner.classList.remove('hidden');
-      footer.classList.add('hidden');
-      studyLabel.textContent = 'Focus Mode: ON';
-      mobileStudyStatus.textContent = 'ACTIVE';
+      if (studyBanner) studyBanner.classList.remove('hidden');
+      if (footer) footer.classList.add('hidden');
+      if (studyLabel) studyLabel.textContent = 'Focus Mode: ON';
+      if (mobileStudyStatus) mobileStudyStatus.textContent = 'ACTIVE';
     } else {
-      studyBanner.classList.add('hidden');
-      footer.classList.remove('hidden');
-      studyLabel.textContent = 'Study Mode';
-      mobileStudyStatus.textContent = 'OFF';
+      if (studyBanner) studyBanner.classList.add('hidden');
+      if (footer) footer.classList.remove('hidden');
+      if (studyLabel) studyLabel.textContent = 'Study Mode';
+      if (mobileStudyStatus) mobileStudyStatus.textContent = 'OFF';
     }
 
     const navHighlight = state.activePage === 'chapter-view' ? 'classes' : state.activePage;
@@ -818,7 +915,9 @@ async function bootExamPulse() {
 
   function renderApp() {
     updateHeaderAndGlobalUI();
-    const mainEl = document.getElementById('app-main');
+    const mainEl = document.getElementById('app-main') || document.getElementById('root');
+    if (!mainEl) return;
+
     if (state.activePage === 'home') {
       mainEl.innerHTML = renderHomeView();
     } else if (state.activePage === 'classes') {
@@ -832,6 +931,10 @@ async function bootExamPulse() {
     }
     bindDynamicEvents();
     startOrStopMockTimer();
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([mainEl]).catch(() => {});
+    }
   }
 
   function selectClassAndOpenDashboard(classId) {
@@ -869,6 +972,17 @@ async function bootExamPulse() {
       });
     }
 
+    const heroBsebMathsBtn = document.getElementById('hero-bseb-maths-btn');
+    if (heroBsebMathsBtn) {
+      heroBsebMathsBtn.addEventListener('click', () => {
+        state.selectedClassId = 'class-9';
+        state.selectedSubjectId = 'maths-9';
+        state.activePage = 'classes';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderApp();
+      });
+    }
+
     const heroBsebBtn = document.getElementById('hero-bseb-ch14-btn');
     if (heroBsebBtn) {
       heroBsebBtn.addEventListener('click', () => {
@@ -876,6 +990,32 @@ async function bootExamPulse() {
         state.selectedSubjectId = 'maths-9';
         state.selectedChapterId = 'ch-statistics-9-bseb';
         state.activeChapterTab = 'notes';
+        state.activePage = 'chapter-view';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderApp();
+      });
+    }
+
+    const heroBsebCh15Btn = document.getElementById('hero-bseb-ch15-btn');
+    if (heroBsebCh15Btn) {
+      heroBsebCh15Btn.addEventListener('click', () => {
+        state.selectedClassId = 'class-9';
+        state.selectedSubjectId = 'maths-9';
+        state.selectedChapterId = 'ch-probability-9-bseb';
+        state.activeChapterTab = 'notes';
+        state.activePage = 'chapter-view';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderApp();
+      });
+    }
+
+    const heroBsebHots50Btn = document.getElementById('hero-bseb-hots50-btn');
+    if (heroBsebHots50Btn) {
+      heroBsebHots50Btn.addEventListener('click', () => {
+        state.selectedClassId = 'class-9';
+        state.selectedSubjectId = 'maths-9';
+        state.selectedChapterId = 'ch-hots-50-9-bseb';
+        state.activeChapterTab = 'subjective';
         state.activePage = 'chapter-view';
         window.scrollTo({ top: 0, behavior: 'smooth' });
         renderApp();
@@ -925,7 +1065,8 @@ async function bootExamPulse() {
     document.querySelectorAll('.open-chapter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         state.selectedChapterId = btn.getAttribute('data-open-chapter');
-        state.activeChapterTab = 'notes';
+        state.activeChapterTab = btn.getAttribute('data-open-tab') || 'notes';
+        state.allSubjectiveOpen = false;
         state.activePage = 'chapter-view';
         window.scrollTo({ top: 0, behavior: 'smooth' });
         renderApp();
@@ -989,6 +1130,20 @@ async function bootExamPulse() {
         renderApp();
       });
     });
+
+    const toggleAllSubjBtn = document.getElementById('toggle-all-subj-btn');
+    if (toggleAllSubjBtn) {
+      toggleAllSubjBtn.addEventListener('click', () => {
+        state.allSubjectiveOpen = !state.allSubjectiveOpen;
+        const ch = getCurrentChapter();
+        if (ch && ch.subjectiveQuestions) {
+          ch.subjectiveQuestions.forEach(sq => {
+            state.subjectiveOpen[sq.id] = state.allSubjectiveOpen;
+          });
+        }
+        renderApp();
+      });
+    }
 
     document.querySelectorAll('.select-test-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1083,18 +1238,22 @@ async function bootExamPulse() {
     });
   }
 
-  document.getElementById('brand-home-btn').addEventListener('click', () => {
-    state.activePage = 'home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    renderApp();
-  });
+  const brandBtn = document.getElementById('brand-home-btn');
+  if (brandBtn) {
+    brandBtn.addEventListener('click', () => {
+      state.activePage = 'home';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      renderApp();
+    });
+  }
 
   document.querySelectorAll('.nav-btn, .mobile-nav-btn, .footer-nav-link').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-nav');
       if (target) {
         state.activePage = target;
-        document.getElementById('mobile-drawer').classList.add('hidden');
+        const drawer = document.getElementById('mobile-drawer');
+        if (drawer) drawer.classList.add('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
         renderApp();
       }
@@ -1107,25 +1266,39 @@ async function bootExamPulse() {
     });
   });
 
-  document.getElementById('study-mode-btn').addEventListener('click', () => {
-    state.studyMode = !state.studyMode;
-    renderApp();
-  });
+  const studyModeBtn = document.getElementById('study-mode-btn');
+  if (studyModeBtn) {
+    studyModeBtn.addEventListener('click', () => {
+      state.studyMode = !state.studyMode;
+      renderApp();
+    });
+  }
 
-  document.getElementById('mobile-study-mode-btn').addEventListener('click', () => {
-    state.studyMode = !state.studyMode;
-    document.getElementById('mobile-drawer').classList.add('hidden');
-    renderApp();
-  });
+  const mobileStudyBtn = document.getElementById('mobile-study-mode-btn');
+  if (mobileStudyBtn) {
+    mobileStudyBtn.addEventListener('click', () => {
+      state.studyMode = !state.studyMode;
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.add('hidden');
+      renderApp();
+    });
+  }
 
-  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
-    state.darkMode = !state.darkMode;
-    renderApp();
-  });
+  const themeBtn = document.getElementById('theme-toggle-btn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      state.darkMode = !state.darkMode;
+      renderApp();
+    });
+  }
 
-  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-drawer').classList.toggle('hidden');
-  });
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    });
+  }
 
   renderApp();
 }
