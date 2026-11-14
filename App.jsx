@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FounderSection from './components/FounderSection';
@@ -6,16 +6,19 @@ import Home from './pages/Home';
 import ClassDashboard from './pages/ClassDashboard';
 import ChapterView from './pages/ChapterView';
 import MockTest from './pages/MockTest';
-import mockData from './data/mockData.json';
+import rawMockData from './data/mockData.json';
+import { enrichExamPulseCurriculum } from './data/bsebClass9MathsComplete';
 
 export default function App() {
+  const mockData = useMemo(() => enrichExamPulseCurriculum(structuredClone(rawMockData)), []);
+
   const [activePage, setActivePage] = useState('home');
   const [darkMode, setDarkMode] = useState(false);
   const [studyMode, setStudyMode] = useState(false);
 
-  const [selectedClassId, setSelectedClassId] = useState('class-10');
-  const [selectedSubjectId, setSelectedSubjectId] = useState('science-10');
-  const [selectedChapterId, setSelectedChapterId] = useState('ch-chem-reactions-10');
+  const [selectedClassId, setSelectedClassId] = useState('class-9');
+  const [selectedSubjectId, setSelectedSubjectId] = useState('maths-9');
+  const [selectedChapterId, setSelectedChapterId] = useState('ch-statistics-9-bseb');
   const [initialChapterTab, setInitialChapterTab] = useState('notes');
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function App() {
   }, [darkMode]);
 
   const currentClass =
-    mockData.classes.find((c) => c.id === selectedClassId) || mockData.classes[4];
+    mockData.classes.find((c) => c.id === selectedClassId) || mockData.classes[3];
   const currentSubject =
     currentClass.subjects.find((s) => s.id === selectedSubjectId) ||
     currentClass.subjects[0];
