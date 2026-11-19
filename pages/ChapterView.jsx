@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   BookOpen,
@@ -25,7 +25,18 @@ export default function ChapterView({
   const [selectedOptions, setSelectedOptions] = useState({});
   const [revealedAnswers, setRevealedAnswers] = useState({});
   const [openSolutions, setOpenSolutions] = useState({});
+  const [allOpen, setAllOpen] = useState(false);
   const [pdfPreviewExpanded, setPdfPreviewExpanded] = useState(false);
+
+  useEffect(() => {
+    setActiveTab(initialTab);
+  }, [initialTab, currentChapter?.id]);
+
+  useEffect(() => {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise().catch(() => {});
+    }
+  }, [activeTab, currentChapter?.id, openSolutions, revealedAnswers]);
 
   if (!currentChapter) return null;
 
@@ -40,6 +51,19 @@ export default function ChapterView({
   const toggleSolutionAccordion = (sqId) => {
     setOpenSolutions((prev) => ({ ...prev, [sqId]: !prev[sqId] }));
   };
+
+  const handleToggleAllSolutions = () => {
+    const nextState = !allOpen;
+    setAllOpen(nextState);
+    const updated = {};
+    (currentChapter.subjectiveQuestions || []).forEach((sq) => {
+      updated[sq.id] = nextState;
+    });
+    setOpenSolutions(updated);
+  };
+
+  const downloadHref =
+    currentChapter.downloadUrl || './public/notes/Class9_Maths_BSEB_Ch14_Statistics.md';
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
@@ -122,7 +146,7 @@ export default function ChapterView({
         </div>
       </div>
 
-      {/* TAB 1: NOTES & PDF VIEWER PLACEHOLDER */}
+      {/* TAB 1: NOTES & PDF VIEWER */}
       {activeTab === 'notes' && (
         <div className="mt-6 space-y-6">
           <div className="rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 dark:border-indigo-900/60 dark:bg-indigo-950/30">
@@ -133,7 +157,7 @@ export default function ChapterView({
                 </div>
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                    CMS-Ready PDF Note Viewer Placeholder
+                    CMS-Ready PDF Note Viewer &amp; Textbook File
                   </span>
                   <h3 className="text-base font-bold text-slate-900 dark:text-white">
                     {currentChapter.pdfFileName}
@@ -145,6 +169,17 @@ export default function ChapterView({
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
+                <a
+                  href={downloadHref}
+                  download={downloadHref.endsWith('.md') ? currentChapter.downloadName : undefined}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700"
+                >
+                  <span>
+                    {downloadHref.includes('.html')
+                      ? '🖨️ Open Printable Question Sheet'
+                      : '⬇ Download Chapter File'}
+                  </span>
+                </a>
                 <button
                   type="button"
                   onClick={() => setPdfPreviewExpanded(!pdfPreviewExpanded)}
@@ -159,11 +194,17 @@ export default function ChapterView({
             {pdfPreviewExpanded && (
               <div className="mt-4 rounded-xl border border-slate-300 bg-white p-6 text-slate-800 shadow-inner dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200">
                 <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-2 text-xs text-slate-500 dark:border-slate-800">
-                  <span>PDF Reader Canvas — Page 1 of {currentChapter.pdfPages}</span>
-                  <span className="font-semibold text-indigo-600">Zoom: 100%</span>
+                  <span>📄 {currentChapter.pdfFileName} — Page 1 of {currentChapter.pdfPages}</span>
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    className="rounded-lg border border-slate-300 bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    🖨️ Print / Save as PDF
+                  </button>
                 </div>
                 <p className="text-sm leading-relaxed">
-                  <strong>[CMS PDF Stream Ready]:</strong> Connect your backend storage (Firebase Storage / AWS S3 / Supabase) to pass the PDF URL directly into this frame. Below are the structured HTML study notes for instant mobile reading:
+                  {currentChapter.notes.summary}
                 </p>
               </div>
             )}
@@ -172,7 +213,7 @@ export default function ChapterView({
           {/* Chapter Executive Summary */}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-              Chapter Overview
+              Chapter Overview (अध्याय का सारांश)
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-700 sm:text-base dark:text-slate-300">
               {currentChapter.notes.summary}
@@ -200,7 +241,7 @@ export default function ChapterView({
               <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-900/50 dark:bg-amber-950/20">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
                   <Sparkles className="h-4 w-4" />
-                  <span>Important Board Formulas, Equations &amp; Key Dates</span>
+                  <span>Important Board Formulas, Equations &amp; Rules (महत्वपूर्ण सूत्र)</span>
                 </div>
                 <ul className="mt-3 space-y-2 text-sm font-medium text-slate-800 dark:text-slate-200">
                   {currentChapter.notes.formulas.map((form, i) => (
@@ -218,20 +259,9 @@ export default function ChapterView({
         </div>
       )}
 
-      {/* TAB 2: OBJECTIVE QUESTIONS (MCQs WITH RADIO BUTTONS & SHOW ANSWER TOGGLE) */}
+      {/* TAB 2: OBJECTIVE QUESTIONS (MCQs) */}
       {activeTab === 'objective' && (
         <div className="mt-6 space-y-5">
-          <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900">
-            <div>
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">
-                Board-Pattern Objective MCQs
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Select an option using the radio buttons or click &ldquo;Show Answer&rdquo; to verify your reasoning.
-              </p>
-            </div>
-          </div>
-
           {currentChapter.objectiveQuestions.map((mcq, qIdx) => {
             const chosenIdx = selectedOptions[mcq.id];
             const isRevealed = !!revealedAnswers[mcq.id];
@@ -245,7 +275,7 @@ export default function ChapterView({
               >
                 <div className="flex items-start justify-between gap-3">
                   <span className="rounded-lg bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
-                    Question {qIdx + 1}
+                    प्रश्न (Question) {qIdx + 1}
                   </span>
                   <span className="text-xs font-semibold text-slate-400">1 Mark • Objective MCQ</span>
                 </div>
@@ -254,7 +284,6 @@ export default function ChapterView({
                   {mcq.question}
                 </p>
 
-                {/* Radio Options */}
                 <div className="mt-4 space-y-2.5">
                   {mcq.options.map((opt, optIdx) => {
                     const isThisSelected = chosenIdx === optIdx;
@@ -307,21 +336,20 @@ export default function ChapterView({
                   })}
                 </div>
 
-                {/* Action Bar: Instant Feedback + Show Answer Toggle */}
                 <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 dark:border-slate-800">
                   <div className="text-xs font-semibold">
                     {isAnswered ? (
                       isCorrect ? (
                         <span className="text-emerald-600 dark:text-emerald-400">
-                          ✓ Great job! Option {String.fromCharCode(65 + chosenIdx)} is correct.
+                          ✓ बिल्कुल सही! Option {String.fromCharCode(65 + chosenIdx)} सही उत्तर है।
                         </span>
                       ) : (
                         <span className="text-amber-600 dark:text-amber-400">
-                          Option {String.fromCharCode(65 + chosenIdx)} selected — click &ldquo;Show Answer&rdquo; to check.
+                          Option {String.fromCharCode(65 + chosenIdx)} चुना गया — जाँचने के लिए &ldquo;Show Answer&rdquo; दबाएँ।
                         </span>
                       )
                     ) : (
-                      <span className="text-slate-400">Select an option above</span>
+                      <span className="text-slate-400">ऊपर दिए गए विकल्पों में से एक चुनें</span>
                     )}
                   </div>
 
@@ -344,11 +372,10 @@ export default function ChapterView({
                   </button>
                 </div>
 
-                {/* Revealed Explanation Box */}
                 {isRevealed && (
                   <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 text-xs leading-relaxed text-emerald-950 sm:text-sm dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200">
                     <p className="font-bold">
-                      Correct Option: {String.fromCharCode(65 + mcq.correctIndex)} ({mcq.options[mcq.correctIndex]})
+                      सही विकल्प (Correct Option): {String.fromCharCode(65 + mcq.correctIndex)} ({mcq.options[mcq.correctIndex]})
                     </p>
                     <p className="mt-1">{mcq.explanation}</p>
                   </div>
@@ -359,16 +386,35 @@ export default function ChapterView({
         </div>
       )}
 
-      {/* TAB 3: SUBJECTIVE QUESTIONS (SHORT & LONG ANSWER WITH VIEW SOLUTION ACCORDION) */}
+      {/* TAB 3: SUBJECTIVE QUESTIONS (SHORT, LONG & HOTS WITH TABLES & SOLUTIONS) */}
       {activeTab === 'subjective' && (
         <div className="mt-6 space-y-4">
-          <div className="rounded-2xl border border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900">
-            <h2 className="text-base font-bold text-slate-900 dark:text-white">
-              Subjective Board Questions (Short &amp; Long Answer Type)
-            </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Try framing your answer mentally first, then click &ldquo;View Solution&rdquo; to expand the step-by-step board marking scheme answer.
-            </p>
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                Subjective Board Questions ({currentChapter.subjectiveQuestions.length} Questions)
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Click &ldquo;View Solution&rdquo; on any question or expand all solutions at once.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={handleToggleAllSolutions}
+                className="rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-700"
+              >
+                {allOpen ? 'सभी हल छुपाएँ (Collapse All)' : 'सभी हल दिखाएँ (Expand All)'}
+              </button>
+              {downloadHref.includes('.html') && (
+                <a
+                  href={downloadHref}
+                  className="rounded-xl border border-indigo-300 bg-indigo-50 px-3.5 py-2 text-xs font-bold text-indigo-700 hover:bg-indigo-100 dark:border-indigo-800 dark:bg-slate-800 dark:text-indigo-300"
+                >
+                  🖨️ Printable Sheet ↗
+                </a>
+              )}
+            </div>
           </div>
 
           {currentChapter.subjectiveQuestions.map((sq, idx) => {
@@ -384,34 +430,80 @@ export default function ChapterView({
                       {sq.type}
                     </span>
                     <span className="text-xs font-semibold text-slate-400">
-                      Board Subjective Q#{idx + 1}
+                      Subjective Q#{sq.qNo || idx + 1}
                     </span>
                   </div>
 
-                  <h3 className="mt-3 text-base font-bold text-slate-900 sm:text-lg dark:text-white">
+                  <h3 className="mt-3 whitespace-pre-line text-base font-bold text-slate-900 sm:text-lg dark:text-white">
                     {sq.question}
                   </h3>
 
-                  <div className="mt-4">
+                  {sq.table && sq.table.headers && sq.table.rows && (
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="w-full max-w-xl border-collapse rounded-lg overflow-hidden">
+                        <thead>
+                          <tr>
+                            {sq.table.headers.map((h, hIdx) => (
+                              <th
+                                key={hIdx}
+                                className="border border-slate-300 bg-slate-100 px-3 py-1.5 text-center text-xs font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                              >
+                                {h}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sq.table.rows.map((r, rIdx) => (
+                            <tr key={rIdx}>
+                              <th className="border border-slate-300 bg-slate-50 px-3 py-1.5 text-center text-xs font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+                                {r[0]}
+                              </th>
+                              {r.slice(1).map((c, cIdx) => (
+                                <td
+                                  key={cIdx}
+                                  className="border border-slate-300 px-3 py-1.5 text-center text-xs text-slate-700 dark:border-slate-700 dark:text-slate-300"
+                                >
+                                  {c}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
+                  <div className="mt-4 flex flex-wrap items-center gap-2.5">
                     <button
                       type="button"
                       onClick={() => toggleSolutionAccordion(sq.id)}
                       className="inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-xs font-bold text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-600 dark:bg-slate-800 dark:text-slate-200"
                     >
-                      <span>{isOpen ? 'Hide Solution' : 'View Solution'}</span>
+                      <span>{isOpen ? 'Hide Solution (हल छुपाएँ)' : 'View Solution (पूरा हल देखें)'}</span>
                       {isOpen ? (
                         <ChevronUp className="h-4 w-4" />
                       ) : (
                         <ChevronDown className="h-4 w-4" />
                       )}
                     </button>
+                    {isOpen && sq.answer && (
+                      <span className="rounded-lg bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300">
+                        उत्तर: {sq.answer}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 {isOpen && (
                   <div className="border-t border-slate-200 bg-indigo-50/40 px-6 py-5 dark:border-slate-800 dark:bg-indigo-950/20">
+                    {sq.answer && (
+                      <p className="mb-2 text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                        ✓ संक्षिप्त उत्तर (Answer Key): {sq.answer}
+                      </p>
+                    )}
                     <p className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                      Model Board Solution:
+                      Model Board Solution (चरणबद्ध हल):
                     </p>
                     <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-800 dark:text-slate-200">
                       {sq.solution}

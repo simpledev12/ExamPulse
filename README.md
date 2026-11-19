@@ -1,88 +1,21 @@
 # ExamPulse — Modern Ed-Tech Platform (Class 6 to 12 Board Exam Prep)
 
-**ExamPulse** is a fast, distraction-free, and 100% mobile-responsive Ed-Tech frontend built with **React.js**, **Tailwind CSS**, and **Lucide React**. Founded by **Khushnoor**, ExamPulse empowers Class 6 to 12 students with structured chapter-wise study notes, interactive Objective MCQs, step-by-step Subjective Q&A, and live timed Mock Tests.
+**ExamPulse** is a fast, distraction-free, and 100% mobile-responsive Ed-Tech platform built for **BSEB & CBSE Class 6 to 12** students. Founded by **Khushnoor**, ExamPulse empowers students with structured chapter-wise study notes, interactive Objective MCQs, step-by-step Subjective Q&A (with MathJax rendering), and live timed Mock Tests.
 
 ---
 
-## ✨ Key Features & Architecture
+## ✨ Key Features & Rearranged Architecture
 
-1. **Distraction-Free "Study Mode" UI**
-   - Trustworthy Deep Indigo/Blue & Slate color palette with one-click **Focus Mode** and **Dark/Light Theme Toggle**.
-   - High-readability `Inter` and `Poppins` typography optimized for long mobile study sessions.
+1. **Complete BSEB Class 9 Mathematics Curriculum (`data/bsebClass9MathsComplete.js`)**
+   - **Chapters 1–6 & 12–13**: Number System, Polynomials (Factor Formulas & Cubic Identities), Coordinate Geometry, Linear Equations in Two Variables, Euclid's Geometry, Lines and Angles, Heron's Formula, and Surface Areas & Volumes — each equipped with Hindi/English notes, formulas, MCQs, and HOTS Subjective Q&As.
+   - **Chapter 14 — सांख्यिकी (Statistics)** (`data/bsebClass9Ch14.js` + `public/notes/Class9_Maths_BSEB_Ch14_Statistics.md`): 8 comprehensive Hindi+English topics, 10 board formulas, 15 Objective MCQs, and 20 Subjective Q&As (15 NCERT/BSEB + 5 HOTS problems with frequency distribution tables).
+   - **Chapter 15 — प्रायिकता (Probability)** (`data/bsebClass9Ch15.js` + `public/notes/Class9_Maths_BSEB_Ch15_Probability.md`): Empirical probability notes, formulas, 6 Objective MCQs, and 5 step-by-step Subjective Q&As.
+   - **Master 50 HOTS Subjective Question Bank** (`data/bsebClass9MathSubjective50.js` + `class-9-math-subjective-50.html`): All 50 HOTS questions accessible both inside the interactive Chapter View and as a standalone printable MathJax sheet.
 
-2. **Home Page & Personal Branding**
-   - **Hero Section**: *"Ace Your Board Exams with ExamPulse"* with instant CTAs to start learning or launch a timed Mock Test.
-   - **Classes Grid (Class 6 to Class 12)**: Interactive cards showing board alignment, subject tags, and chapter counts.
-   - **About The Founder Section**: Dedicated personal branding showcase for **Khushnoor** featuring his portrait photo, educator bio, and handwritten signature.
+2. **3-in-1 Core Learning Interface (`pages/ChapterView.jsx` & `public/exampulse-live.js`)**
+   - **Tab 1 — Notes & Study Material**: Chapter overview, key concepts, formula cheat sheets, dynamic chapter file download, and printable PDF preview.
+   - **Tab 2 — Objective Questions (MCQs)**: Interactive option selection, instant feedback, and expandable explanations.
+   - **Tab 3 — Subjective Questions (Q&A)**: Short, Long, and HOTS questions with frequency tables, answer badges, step-by-step solutions, and one-click Expand/Collapse All.
 
-3. **Class & Subject Dashboard (`/pages/ClassDashboard.jsx`)**
-   - Seamless filtering across **Class 6 to Class 12**.
-   - Subject-wise grid (Mathematics, Science, Physics, Chemistry, Social Science, English) leading into detailed chapter lists with board weightage and reading duration.
-
-4. **Core Learning Interface (`/pages/ChapterView.jsx`)**
-   - **Tab 1 — Notes**: Structured chapter summary, key concepts, formula/reaction cheat sheets, and a CMS-ready PDF reader placeholder.
-   - **Tab 2 — Objective Questions (MCQs)**: Interactive radio buttons, instant option selection feedback, and a **"Show Answer"** toggle with detailed explanations.
-   - **Tab 3 — Subjective Questions**: Short & Long answer questions with expandable **"View Solution"** accordions.
-
-5. **Dedicated Mock Test UI (`/pages/MockTest.jsx`)**
-   - Live countdown timer at the top.
-   - Interactive Question Navigator Palette showing *Answered*, *Current*, *Marked for Review*, and *Pending* states.
-   - Next/Previous/Mark for Review controls, **"Submit Test"** action, and an instant **Result/Scorecard Modal**.
-
----
-
-## 📁 Project Folder Structure
-
-```text
-ExamPulse/
-├── components/
-│   ├── Header.jsx           # Sticky navbar with Brand, Links, Focus Mode & Theme toggle
-│   ├── Footer.jsx           # Quick links, Class shortcuts & Social links
-│   └── FounderSection.jsx   # Personal branding section for Founder Khushnoor
-├── pages/
-│   ├── Home.jsx             # Landing page (Hero, Class 6–12 Grid, Features, Founder)
-│   ├── ClassDashboard.jsx   # Subject cards & Chapter list per Class
-│   ├── ChapterView.jsx      # 3-Tab learning view (Notes, Objective MCQs, Subjective Q&A)
-│   └── MockTest.jsx         # Timed Mock Test interface with Question Palette & Score Modal
-├── data/
-│   ├── mockData.json        # Modular JSON curriculum data (ready for CMS/Backend API)
-│   └── founderAssets.js     # Pre-bundled portrait & signature assets for Khushnoor
-├── styles/
-│   └── globals.css          # Tailwind CSS directives & custom scrollbar utilities
-├── public/
-│   ├── manifest.json        # PWA web manifest
-│   └── robots.txt           # Crawler rules
-├── App.jsx                  # Root state & view router
-├── main.jsx                 # React DOM entry point
-├── index.html               # HTML template with Inter & Poppins Google Fonts
-├── package.json             # Dependencies & scripts
-├── tailwind.config.js       # Tailwind theme configuration
-├── postcss.config.js        # PostCSS plugins
-└── vite.config.js           # Vite bundler config
-```
-
----
-
-## 🚀 How to Run Locally
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/simpledev12/ExamPulse.git
-   cd ExamPulse
-   ```
-
-2. **Checkout the feature branch (or stay on `main`)**
-   ```bash
-   git checkout feature/initial-ui-setup
-   ```
-
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:3000` in your browser.
+3. **Live Timed Mock Tests (`pages/MockTest.jsx`)**
+   - Includes **Class 9 Mathematics (BSEB) Board Mock Test**, **Class 10 Science Mock Test**, and **Class 12 PCM Booster** with live countdown timer, question navigator palette, and instant scorecard modal.
