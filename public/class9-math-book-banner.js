@@ -19,8 +19,7 @@
   function createBanner() {
     const wrap = document.createElement("div");
     wrap.id = BANNER_ID;
-    wrap.className =
-      "mx-auto max-w-7xl px-4 pt-5 sm:px-6 lg:px-8";
+    wrap.className = "mx-auto max-w-7xl px-4 pt-5 sm:px-6 lg:px-8";
     wrap.innerHTML = `
       <div class="rounded-2xl border-2 border-indigo-200 bg-gradient-to-r from-indigo-900 via-blue-900 to-slate-900 p-5 text-white shadow-lg dark:border-indigo-700">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -69,7 +68,7 @@
   }
 
   function syncBanner() {
-    const mainEl = document.getElementById("app-main");
+    const mainEl = document.getElementById("app-main") || document.getElementById("root");
     if (!mainEl) return;
     const existing = document.getElementById(BANNER_ID);
     if (shouldShowBanner(mainEl)) {
@@ -81,12 +80,20 @@
     }
   }
 
-  const observer = new MutationObserver(() => syncBanner());
-  window.addEventListener("DOMContentLoaded", () => {
-    const mainEl = document.getElementById("app-main");
-    if (mainEl) {
-      observer.observe(mainEl, { childList: true, subtree: true });
-      syncBanner();
+  function init() {
+    const mainEl = document.getElementById("app-main") || document.getElementById("root");
+    if (!mainEl) {
+      setTimeout(init, 250);
+      return;
     }
-  });
+    const observer = new MutationObserver(() => syncBanner());
+    observer.observe(mainEl, { childList: true, subtree: true });
+    syncBanner();
+  }
+
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
