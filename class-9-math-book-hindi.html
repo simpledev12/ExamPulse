@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BSEB कक्षा 9 गणित — संपूर्ण नोट्स एवं सूत्र पुस्तक (हिंदी संस्करण) | ExamPulse</title>
+  <title>BSEB कक्षा 9 गणित — 205 पेज PDF पुस्तक (हिंदी संस्करण) | ExamPulse</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script>
@@ -42,7 +42,7 @@
     }
     header.hero .badge {
       display: inline-block;
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.16);
       padding: 0.25rem 0.9rem;
       border-radius: 999px;
       font-size: 0.85rem;
@@ -50,16 +50,29 @@
       margin-bottom: 0.75rem;
     }
     header.hero h1 { margin: 0.2rem 0 0.5rem; font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
-    header.hero p { max-width: 760px; margin: 0 auto 1.2rem; color: #e2e8f0; }
+    header.hero p { max-width: 780px; margin: 0 auto 1.25rem; color: #e2e8f0; }
     .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.65rem 1.25rem; border-radius: 8px; font-weight: 700;
+      padding: 0.7rem 1.3rem; border-radius: 8px; font-weight: 700;
       text-decoration: none; cursor: pointer; border: none; font-size: 0.95rem;
       font-family: inherit;
     }
     .btn-primary { background: var(--accent); color: #fff; }
+    .btn-green { background: #15803d; color: #fff; }
     .btn-outline { background: #fff; color: var(--primary); }
+    .pdf-viewer-wrap {
+      max-width: 1120px; margin: 1.5rem auto 0; padding: 0 1rem;
+    }
+    .pdf-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.25rem; box-shadow: 0 2px 6px rgba(15,23,42,0.06);
+    }
+    .pdf-card h2 { margin: 0 0 0.5rem; color: var(--primary); font-size: 1.25rem; }
+    .pdf-frame {
+      width: 100%; height: 680px; border: 1px solid var(--border); border-radius: 8px;
+      background: #e2e8f0;
+    }
     .layout {
       max-width: 1120px; margin: 1.5rem auto; padding: 0 1rem;
       display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; align-items: start;
@@ -102,9 +115,10 @@
     @media (max-width: 860px) {
       .layout { grid-template-columns: 1fr; }
       nav.toc { position: static; max-height: none; }
+      .pdf-frame { height: 480px; }
     }
     @media print {
-      header.hero .actions, nav.toc { display: none !important; }
+      header.hero .actions, nav.toc, .pdf-viewer-wrap { display: none !important; }
       .layout { display: block; max-width: 100%; margin: 0; padding: 0; }
       section.chapter { page-break-after: always; border: none; box-shadow: none; padding: 0.5rem 0; }
     }
@@ -112,15 +126,24 @@
 </head>
 <body>
   <header class="hero">
-    <span class="badge">ExamPulse Hindi Edition &bull; BSEB / SCERT Bihar (2026-27)</span>
-    <h1>बिहार बोर्ड कक्षा 9 गणित — संपूर्ण नोट्स एवं सूत्र पुस्तक</h1>
-    <p>सभी 15 अध्यायों के संपूर्ण हिंदी नोट्स, प्रमेय, महा-सूत्र संग्रह, हल उदाहरण एवं बोर्ड परीक्षा तैयारी गाइड (205-पृष्ठ PDF संस्करण का वेब पोर्टल)</p>
+    <span class="badge">ExamPulse Hindi Edition &bull; BSEB / SCERT Bihar (2026-27) &bull; 205 पृष्ठ</span>
+    <h1>बिहार बोर्ड कक्षा 9 गणित — संपूर्ण नोट्स एवं सूत्र PDF पुस्तक</h1>
+    <p>सभी 15 अध्यायों के संपूर्ण हिंदी नोट्स, प्रमेय, महा-सूत्र संग्रह, 150+ हल उदाहरण, 225+ वस्तुनिष्ठ प्रश्न एवं 100-अंक मॉडल पेपर</p>
     <div class="actions">
-      <button class="btn btn-primary" onclick="window.print()">प्रिंट / PDF सेव करें</button>
+      <a class="btn btn-primary" href="https://drive.google.com/uc?export=download&id=1oN6MwReVrY8pJ_OYGJm95878H-U1Dt_b" target="_blank" rel="noopener">205-पेज PDF बुक डाउनलोड करें</a>
+      <a class="btn btn-green" href="https://drive.google.com/file/d/1oN6MwReVrY8pJ_OYGJm95878H-U1Dt_b/view" target="_blank" rel="noopener">पूर्ण स्क्रीन PDF पढ़ें</a>
+      <button class="btn btn-outline" onclick="window.print()">वेब नोट्स प्रिंट करें</button>
       <a class="btn btn-outline" href="./">ExamPulse होम</a>
       <a class="btn btn-outline" href="./class-9-math-subjective-50.html">50 HOTS प्रश्न बैंक</a>
     </div>
   </header>
+
+  <div class="pdf-viewer-wrap">
+    <div class="pdf-card">
+      <h2>लाइव 205-पेज हिंदी PDF पुस्तक प्रीव्यू (BSEB Class 9th Math Book)</h2>
+      <iframe class="pdf-frame" src="https://drive.google.com/file/d/1oN6MwReVrY8pJ_OYGJm95878H-U1Dt_b/preview" allow="autoplay" title="BSEB Class 9 Math Hindi Book PDF"></iframe>
+    </div>
+  </div>
 
   <div class="layout">
     <nav class="toc">
@@ -378,7 +401,7 @@
   </div>
 
   <footer>
-    &copy; 2026-27 ExamPulse Educational Platform (BSEB Class 9 Mathematics Hindi Edition)
+    &copy; 2026-27 ExamPulse Educational Platform (BSEB Class 9 Mathematics Hindi Edition — 205 Pages PDF)
   </footer>
 </body>
 </html>
