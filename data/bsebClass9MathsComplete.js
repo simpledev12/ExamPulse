@@ -1,8 +1,10 @@
-// Unified BSEB Class 9 Mathematics Curriculum Aggregator
-// Connects bsebClass9Ch14.js, bsebClass9Ch15.js, and bsebClass9MathSubjective50.js into the ExamPulse website
+// Unified BSEB Class 9 Mathematics Curriculum Aggregator (All 15 Chapters + 205-Page Hindi PDF Book + 50 HOTS)
 import { BSEB_CLASS9_MATHS_SUBJECT as CH14_SUBJECT } from './bsebClass9Ch14.js';
 import { bsebClass9Ch15 } from './bsebClass9Ch15.js';
 import { bsebClass9MathSubjective50 } from './bsebClass9MathSubjective50.js';
+
+const PDF_BOOK_DRIVE_VIEW = "https://drive.google.com/file/d/1oN6MwReVrY8pJ_OYGJm95878H-U1Dt_b/view?usp=drivesdk";
+const PDF_BOOK_DRIVE_DOWNLOAD = "https://drive.google.com/uc?export=download&id=1oN6MwReVrY8pJ_OYGJm95878H-U1Dt_b";
 
 const CHAPTER_METADATA_MAP = {
   1: {
@@ -17,7 +19,7 @@ const CHAPTER_METADATA_MAP = {
       },
       {
         heading: "2. हर का परिमेयकरण एवं बीजगणितीय सर्वसमिकाएँ (Rationalization)",
-        body: "यदि किसी व्यंजक के हर में अपरिमेय संख्या (a + b√x) हो, तो अंश और हर में उसके संयुग्मी (a - b√x) से गुणा करके हर को परिमेय बनाया जाता है। यदि x = a + √b और 1/x = a - √b हो, तो x + 1/x = 2a से x² + 1/x² = (x + 1/x)² - 2 तथा x³ + 1/x³ = (x + 1/x)³ - 3(x + 1/x) आसानी से ज्ञात किए जाते हैं।"
+        body: "यदि किसी व्यंजक के हर में अपरिमेय संख्या (a + b√x) हो, तो अंश और हर में उसके संयुग्मी (a - b√x) से गुणा करके हर को परिमेय बनाया जाता है।"
       }
     ],
     formulas: [
@@ -68,7 +70,7 @@ const CHAPTER_METADATA_MAP = {
     formulas: [
       "(a + b + c)² = a² + b² + c² + 2(ab + bc + ca)",
       "a³ + b³ = (a + b)(a² - ab + b²)  |  a³ - b³ = (a - b)(a² + ab + b²)",
-      "a³ + b³ + c³ - 3abc = (a + b + c)(a² + b² + c² - ab - bc - ca) = ½(a+b+c)[(a-b)² + (b-c)² + (c-a)²]",
+      "a³ + b³ + c³ - 3abc = (a + b + c)(a² + b² + c² - ab - bc - ca)",
       "यदि a + b + c = 0 हो, तो a³ + b³ + c³ = 3abc"
     ],
     mcqs: [
@@ -77,7 +79,7 @@ const CHAPTER_METADATA_MAP = {
         question: "यदि a + b + c = 0 हो, तो a³ + b³ + c³ का मान किसके बराबर होता है?",
         options: ["0", "abc", "3abc", "a² + b² + c²"],
         correctIndex: 2,
-        explanation: "सर्वसमिका a³ + b³ + c³ - 3abc = (a+b+c)(a²+b²+c²-ab-bc-ca) में a+b+c = 0 रखने पर a³ + b³ + c³ = 3abc प्राप्त होता है।"
+        explanation: "यदि a + b + c = 0 हो, तो सर्वसमिका से a³ + b³ + c³ = 3abc प्राप्त होता है।"
       },
       {
         id: "q-9m2-2",
@@ -91,12 +93,12 @@ const CHAPTER_METADATA_MAP = {
   3: {
     englishTitle: "Coordinate Geometry",
     duration: "45 mins",
-    weightage: "6 Marks (BSEB)",
+    weightage: "10 Marks (BSEB)",
     summary: "निर्देशांक ज्यामिति (Coordinate Geometry) में कार्तीय तल (Cartesian Plane), X-अक्ष तथा Y-अक्ष, मूलबिंदु (0,0), चारों चतुर्थांशों के चिह्न तथा भुज (Abscissa) व कोटि (Ordinate) की सहायता से बिंदुओं का आलेखन और क्षेत्रफल ज्ञात किया जाता है।",
     keyConcepts: [
       {
         heading: "1. भुज, कोटि एवं चतुर्थांश (Abscissa, Ordinate & Quadrants)",
-        body: "• बिंदु (x, y) में x को भुज (Y-अक्ष से लांबिक दूरी) और y को कोटि (X-अक्ष से लांबिक दूरी) कहते हैं।\n• चतुर्थांश चिह्न: प्रथम (+, +), द्वितीय (-, +), तृतीय (-, -), चतुर्थ (+, -)।\n• X-अक्ष पर बिंदु (x, 0) तथा Y-अक्ष पर बिंदु (0, y) के रूप में होता है।"
+        body: "• बिंदु (x, y) में x को भुज और y को कोटि कहते हैं।\n• चतुर्थांश चिह्न: प्रथम (+, +), द्वितीय (-, +), तृतीय (-, -), चतुर्थ (+, -)।\n• X-अक्ष पर बिंदु (x, 0) तथा Y-अक्ष पर बिंदु (0, y) के रूप में होता है।"
       }
     ],
     formulas: [
@@ -171,7 +173,7 @@ const CHAPTER_METADATA_MAP = {
     keyConcepts: [
       {
         heading: "1. कोण युग्म एवं समांतर रेखाओं के गुण (Angle Pairs & Parallel Lines)",
-        body: "• पूरक कोणों का योग = 90° तथा संपूरक कोणों का योग = 180°।\n• समांतर रेखाओं में संगत कोण एवं एकांतर अंतः कोण बराबर होते हैं, तथा एक ही ओर के अंतः कोणों का योग 180° होता है (अतः उनके समद्विभाजक 90° पर मिलते हैं)।"
+        body: "• पूरक कोणों का योग = 90° तथा संपूरक कोणों का योग = 180°।\n• समांतर रेखाओं में संगत कोण एवं एकांतर अंतः कोण बराबर होते हैं, तथा एक ही ओर के अंतः कोणों का योग 180° होता है।"
       }
     ],
     formulas: [
@@ -197,7 +199,7 @@ const CHAPTER_METADATA_MAP = {
     keyConcepts: [
       {
         heading: "1. हीरोन का सूत्र एवं चतुर्भुज का क्षेत्रफल (Heron's Formula & Quadrilaterals)",
-        body: "• अर्धपरिमाप s = (a + b + c)/2।\n• त्रिभुज का क्षेत्रफल = √[s(s - a)(s - b)(s - c)]।\n• किसी चतुर्भुज का क्षेत्रफल निकालने के लिए विकर्ण खींचकर उसे दो त्रिभुजों में बाँटते हैं।"
+        body: "• अर्धपरिमाप s = (a + b + c)/2।\n• त्रिभुज का क्षेत्रफल = √[s(s - a)(s - b)(s - c)]।"
       }
     ],
     formulas: [
@@ -211,7 +213,7 @@ const CHAPTER_METADATA_MAP = {
         question: "यदि किसी त्रिभुज की प्रत्येक भुजा को दोगुना कर दिया जाए, तो उसके क्षेत्रफल में कितने प्रतिशत की वृद्धि होगी?",
         options: ["100%", "200%", "300%", "400%"],
         correctIndex: 2,
-        explanation: "भुजाएँ 2a, 2b, 2c होने पर नया क्षेत्रफल 4Δ हो जाता है। अतः वृद्धि = ((4Δ - Δ)/Δ)×100% = 300%।"
+        explanation: "भुजाएँ 2a, 2b, 2c होने पर नया क्षेत्रफल 4Δ हो जाता है। अतः वृद्धि = 300%।"
       }
     ]
   },
@@ -223,12 +225,12 @@ const CHAPTER_METADATA_MAP = {
     keyConcepts: [
       {
         heading: "1. बेलन, शंकु एवं गोले के मुख्य सूत्र (Cylinder, Cone & Sphere)",
-        body: "• बेलन (Cylinder): वक्र पृष्ठ = 2πrh, कुल पृष्ठ = 2πr(r + h), आयतन = πr²h।\n• शंकु (Cone): तिर्यक ऊँचाई l = √(r² + h²), वक्र पृष्ठ = πrl, कुल पृष्ठ = πr(l + r), आयतन = ⅓πr²h।\n• गोला (Sphere): पृष्ठीय क्षेत्रफल = 4πr², आयतन = (4/3)πr³।"
+        body: "• बेलन: वक्र पृष्ठ = 2πrh, कुल पृष्ठ = 2πr(r + h), आयतन = πr²h।\n• शंकु: l = √(r² + h²), वक्र पृष्ठ = πrl, कुल पृष्ठ = πr(l + r), आयतन = ⅓πr²h।\n• गोला: पृष्ठ = 4πr², आयतन = (4/3)πr³; अर्द्धगोला: TSA = 3πr², आयतन = (2/3)πr³।"
       }
     ],
     formulas: [
       "बेलन का वक्र पृष्ठ = 2πrh  |  बेलन का आयतन = πr²h",
-      "शंकु का वक्र पृष्ठ = πrl (l = √(r² + h²))  |  शंकु का कुल पृष्ठ = πr(l + r)  |  आयतन = ⅓πr²h",
+      "शंकु का वक्र पृष्ठ = πrl (l = √(r² + h²))  |  आयतन = ⅓πr²h",
       "गोले का पृष्ठ = 4πr²  |  आयतन = (4/3)πr³  |  1 m³ = 1000 लीटर"
     ],
     mcqs: [
@@ -237,16 +239,251 @@ const CHAPTER_METADATA_MAP = {
         question: "एक शंकु के आधार की त्रिज्या 7 cm और ऊँचाई 24 cm है। इसकी तिर्यक ऊँचाई (l) क्या होगी?",
         options: ["25 cm", "26 cm", "31 cm", "17 cm"],
         correctIndex: 0,
-        explanation: "l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 cm।"
+        explanation: "l = √(7² + 24²) = √625 = 25 cm।"
       }
     ]
   }
 };
 
+const GEOMETRY_CH7_TO_11 = [
+  {
+    id: "ch-math-9-ch7",
+    number: 7,
+    title: "अध्याय 7: त्रिभुज (Triangles)",
+    duration: "65 mins",
+    weightage: "6 Marks (BSEB)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: "./class-9-math-book-hindi.html#ch7",
+    downloadName: "BSEB_Class_9_Math_Ch7_Triangles.html",
+    pdfPages: 14,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "त्रिभुजों की सर्वांगसमता की पाँच कसौटियाँ (SAS, ASA, AAS, SSS, RHS), CPCT नियम, समद्विबाहु त्रिभुज के गुणधर्म एवं त्रिभुज असमिकाएँ।",
+      keyConcepts: [
+        {
+          heading: "1. सर्वांगसमता की पाँच कसौटियाँ (Congruence Rules)",
+          body: "• SAS (भुजा-कोण-भुजा), ASA (कोण-भुजा-कोण), AAS (कोण-कोण-भुजा), SSS (भुजा-भुजा-भुजा), RHS (समकोण-कर्ण-भुजा)।\n• ध्यान रखें: AAA और SSA सर्वांगसमता की कसौटियाँ नहीं हैं।"
+        },
+        {
+          heading: "2. समद्विबाहु त्रिभुज एवं असमिकाएँ",
+          body: "• बराबर भुजाओं के सम्मुख कोण बराबर होते हैं।\n• बड़े कोण की सम्मुख भुजा सबसे लंबी होती है; दो भुजाओं का योग तीसरी भुजा से बड़ा होता है (a + b > c)।"
+        }
+      ],
+      formulas: [
+        "समबाहु त्रिभुज का प्रत्येक कोण = 60°",
+        "त्रिभुज असमिका: a + b > c, b + c > a, c + a > b",
+        "समकोण त्रिभुज में कर्ण सबसे लंबी भुजा होती है"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-9m7-1",
+        question: "निम्नलिखित में से कौन त्रिभुजों की सर्वांगसमता की कसौटी नहीं है?",
+        options: ["SAS", "ASA", "SSS", "SSA"],
+        correctIndex: 3,
+        explanation: "SSA और AAA सर्वांगसमता की कसौटियाँ नहीं होतीं।"
+      }
+    ],
+    subjectiveQuestions: [
+      {
+        id: "sq-9m7-1",
+        type: "प्रमेय 7.2 (Board Important)",
+        question: "सिद्ध कीजिए कि एक समद्विबाहु त्रिभुज की बराबर भुजाओं के सम्मुख कोण बराबर होते हैं।",
+        solution: "∠A का समद्विभाजक AD खींचें। △BAD व △CAD में AB = AC, ∠BAD = ∠CAD, AD = AD। SAS से △BAD ≅ △CAD ⇒ ∠B = ∠C (CPCT)।"
+      }
+    ]
+  },
+  {
+    id: "ch-math-9-ch8",
+    number: 8,
+    title: "अध्याय 8: चतुर्भुज (Quadrilaterals)",
+    duration: "60 mins",
+    weightage: "6 Marks (BSEB)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: "./class-9-math-book-hindi.html#ch8",
+    downloadName: "BSEB_Class_9_Math_Ch8_Quadrilaterals.html",
+    pdfPages: 13,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "चतुर्भुज के चारों कोणों का योग 360°, समांतर चतुर्भुज, आयत, वर्ग, समचतुर्भुज के गुणधर्म तथा मध्य-बिंदु प्रमेय (Mid-Point Theorem)।",
+      keyConcepts: [
+        {
+          heading: "1. मध्य-बिंदु प्रमेय (Mid-Point Theorem)",
+          body: "किसी त्रिभुज की किन्हीं दो भुजाओं के मध्य-बिंदुओं को मिलाने वाला रेखाखंड तीसरी भुजा के समांतर और उसका आधा होता है (EF || BC, EF = ½BC)।"
+        }
+      ],
+      formulas: [
+        "चतुर्भुज कोण योग: ∠A + ∠B + ∠C + ∠D = 360°",
+        "आयत विकर्ण = √(l² + b²)  |  वर्ग विकर्ण = a√2  |  समचतुर्भुज भुजा = ½√(d₁² + d₂²)"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-9m8-1",
+        question: "समचतुर्भुज के विकर्ण परस्पर किस कोण पर समद्विभाजित करते हैं?",
+        options: ["45°", "60°", "90°", "120°"],
+        correctIndex: 2,
+        explanation: "समचतुर्भुज और वर्ग के विकर्ण परस्पर 90° (समकोण) पर समद्विभाजित करते हैं।"
+      }
+    ],
+    subjectiveQuestions: []
+  },
+  {
+    id: "ch-math-9-ch9",
+    number: 9,
+    title: "अध्याय 9: समांतर चतुर्भुजों और त्रिभुजों के क्षेत्रफल",
+    duration: "50 mins",
+    weightage: "5 Marks (BSEB)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: "./class-9-math-book-hindi.html#ch9",
+    downloadName: "BSEB_Class_9_Math_Ch9_Areas.html",
+    pdfPages: 12,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "एक ही आधार और एक ही समांतर रेखाओं के बीच स्थित समांतर चतुर्भुजों एवं त्रिभुजों के क्षेत्रफल संबंध तथा माध्यिका गुणधर्म।",
+      keyConcepts: [
+        {
+          heading: "1. प्रमुख क्षेत्रफल प्रमेय",
+          body: "• एक ही आधार और समांतर रेखाओं के बीच स्थित समांतर चतुर्भुजों के क्षेत्रफल बराबर होते हैं।\n• त्रिभुज का क्षेत्रफल समांतर चतुर्भुज का आधा होता है।\n• माध्यिका किसी त्रिभुज को बराबर क्षेत्रफल वाले दो त्रिभुजों में विभाजित करती है।"
+        }
+      ],
+      formulas: [
+        "ar(∥gm) = आधार × ऊँचाई  |  ar(△) = ½ × आधार × ऊँचाई",
+        "समचतुर्भुज क्षेत्रफल = ½ × d₁ × d₂  |  समलंब = ½(a + b) × h"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-9m9-1",
+        question: "यदि एक समांतर चतुर्भुज का क्षेत्रफल 48 cm² है, तो उसी आधार व समांतर रेखाओं के बीच बने त्रिभुज का क्षेत्रफल होगा:",
+        options: ["12 cm²", "24 cm²", "48 cm²", "96 cm²"],
+        correctIndex: 1,
+        explanation: "त्रिभुज का क्षेत्रफल समांतर चतुर्भुज के क्षेत्रफल का आधा (48/2 = 24 cm²) होता है।"
+      }
+    ],
+    subjectiveQuestions: []
+  },
+  {
+    id: "ch-math-9-ch10",
+    number: 10,
+    title: "अध्याय 10: वृत्त (Circles)",
+    duration: "65 mins",
+    weightage: "7 Marks (BSEB)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: "./class-9-math-book-hindi.html#ch10",
+    downloadName: "BSEB_Class_9_Math_Ch10_Circles.html",
+    pdfPages: 14,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "जीवा, केंद्र से लंब, प्रमेय 10.8 (केंद्र का कोण परिधि का दोगुना), अर्द्धवृत्त का कोण 90°, तथा चक्रीय चतुर्भुज के गुणधर्म।",
+      keyConcepts: [
+        {
+          heading: "1. वृत्त के प्रमुख प्रमेय",
+          body: "• केंद्र से जीवा पर डाला गया लंब जीवा को समद्विभाजित करता है।\n• केंद्र पर अंतरित कोण परिधि पर अंतरित कोण का दोगुना होता है (∠AOB = 2∠ACB)।\n• अर्द्धवृत्त का कोण समकोण (90°) होता है।\n• चक्रीय चतुर्भुज के सम्मुख कोणों का योग 180° होता है।"
+        }
+      ],
+      formulas: [
+        "r² = OM² + (AB/2)²  |  ∠AOB = 2∠ACB",
+        "चक्रीय चतुर्भुज: ∠A + ∠C = 180° तथा ∠B + ∠D = 180°"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-9m10-1",
+        question: "अर्द्धवृत्त का कोण कितना होता है?",
+        options: ["45°", "60°", "90°", "180°"],
+        correctIndex: 2,
+        explanation: "अर्द्धवृत्त में बना कोण सदैव समकोण (90°) होता है।"
+      }
+    ],
+    subjectiveQuestions: []
+  },
+  {
+    id: "ch-math-9-ch11",
+    number: 11,
+    title: "अध्याय 11: रचनाएँ (Constructions)",
+    duration: "45 mins",
+    weightage: "5 Marks (BSEB)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: "./class-9-math-book-hindi.html#ch11",
+    downloadName: "BSEB_Class_9_Math_Ch11_Constructions.html",
+    pdfPages: 11,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "पटरी व परकार की सहायता से मानक कोण (15° के गुणज) तथा दिए गए प्रतिबंधों के अंतर्गत त्रिभुजों की रचना।",
+      keyConcepts: [
+        {
+          heading: "1. मानक कोण एवं त्रिभुज रचना की 3 स्थितियाँ",
+          body: "• परकार से 60°, 120°, 90°, 45°, 30°, 75°, 105°, 135° के कोण बनाए जाते हैं।\n• त्रिभुज रचना: (1) आधार, कोण व योग AB+AC, (2) आधार, कोण व अंतर AB-AC, (3) परिमाप व दोनों आधार कोण।"
+        }
+      ],
+      formulas: [
+        "लंब समद्विभाजक त्रिज्या > रेखाखंड की आधी लंबाई",
+        "परिमाप विधि में सिरों पर ½∠B और ½∠C कोण बनाए जाते हैं"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-9m11-1",
+        question: "पटरी और परकार की सहायता से निम्न में कौन-सा कोण नहीं बनाया जा सकता?",
+        options: ["45°", "75°", "40°", "105°"],
+        correctIndex: 2,
+        explanation: "केवल 15° के गुणज या उनके आधे कोण ही पटरी व परकार से बनाए जा सकते हैं; 40° नहीं।"
+      }
+    ],
+    subjectiveQuestions: []
+  }
+];
+
 export function buildCompleteBsebClass9Maths() {
   const arrangedChapters = [];
 
-  // 1. Build Chapters 1–6 and 12–13 from bsebClass9MathSubjective50 + CHAPTER_METADATA_MAP
+  // 0. Featured Complete 205-Page Hindi Edition PDF Book right at the TOP of Class 9th Math
+  arrangedChapters.push({
+    id: "ch-bseb-9-math-complete-pdf-book",
+    number: "BOOK",
+    title: "संपूर्ण 205-पेज PDF पुस्तक — BSEB कक्षा 9 गणित (सभी 15 अध्याय, सूत्र, प्रमेय एवं मॉडल पेपर — हिंदी संस्करण)",
+    duration: "205 Pages PDF",
+    weightage: "100 Marks (Full Syllabus)",
+    pdfFileName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    downloadUrl: PDF_BOOK_DRIVE_DOWNLOAD,
+    downloadName: "BSEB_Class_9_Math_Hindi_Book.pdf",
+    pdfPages: 205,
+    pdfSize: "1.14 MB",
+    notes: {
+      summary: "बिहार बोर्ड (BSEB / SCERT) कक्षा 9 गणित के सभी 15 अध्यायों की संपूर्ण 205-पेज हिंदी संस्करण PDF पुस्तक। इसमें प्रत्येक अध्याय के विस्तृत नोट्स, महा-सूत्र संग्रह, प्रमेय-उपपत्ति, 150+ चरणबद्ध हल उदाहरण, 225+ वस्तुनिष्ठ प्रश्न (MCQs), अध्यायवार यूनिट टेस्ट एवं 100-अंक मॉडल प्रश्न पत्र शामिल हैं। वेब रीडर के लिए ./class-9-math-book-hindi.html खोलें या ऊपर दिए गए डाउनलोड बटन से सीधे 205-पेज PDF डाउनलोड करें।",
+      keyConcepts: [
+        {
+          heading: "पुस्तक में सम्मिलित सभी 15 अध्याय (Complete 15-Chapter Index)",
+          body: "• अध्याय 1: संख्या पद्धति (10 अंक)\n• अध्याय 2: बहुपद & अध्याय 4: दो चरों वाले रैखिक समीकरण (25 अंक)\n• अध्याय 3: निर्देशांक ज्यामिति (10 अंक)\n• अध्याय 5–11: यूक्लिड की ज्यामिति, रेखाएँ और कोण, त्रिभुज, चतुर्भुज, क्षेत्रफल, वृत्त, रचनाएँ (30 अंक)\n• अध्याय 12–13: हीरोन का सूत्र, पृष्ठीय क्षेत्रफल और आयतन (15 अंक)\n• अध्याय 14–15: सांख्यिकी एवं प्रायिकता (10 अंक)"
+        },
+        {
+          heading: "पुस्तक डाउनलोड एवं ऑनलाइन रीडर लिंक",
+          body: "• लाइव 205-पेज PDF प्रीव्यू व वेब बुक: https://simpledev12.github.io/ExamPulse/class-9-math-book-hindi.html\n• डायरेक्ट PDF डाउनलोड (1.14 MB, 205 Pages): " + PDF_BOOK_DRIVE_VIEW
+        }
+      ],
+      formulas: [
+        "अध्याय 1: (√a + √b)(√a - √b) = a - b  |  a^m · a^n = a^(m+n)",
+        "अध्याय 2: x³ + y³ + z³ - 3xyz = (x+y+z)(x²+y²+z²-xy-yz-zx)",
+        "अध्याय 6–10: ∠A+∠B+∠C = 180°  |  EF = ½BC  |  ∠AOB = 2∠ACB  |  चक्रीय ∠A+∠C = 180°",
+        "अध्याय 12–13: Δ = √[s(s-a)(s-b)(s-c)]  |  शंकु V = ⅓πr²h  |  गोला V = (4/3)πr³",
+        "अध्याय 14–15: Mode = 3·Median - 2·Mean  |  0 ≤ P(E) ≤ 1  |  P(E) + P(Ē) = 1"
+      ]
+    },
+    objectiveQuestions: [
+      {
+        id: "q-book-1",
+        question: "बिहार बोर्ड कक्षा 9 गणित की वार्षिक परीक्षा का कुल पूर्णांक कितना होता है?",
+        options: ["50 अंक", "70 अंक", "80 अंक", "100 अंक"],
+        correctIndex: 3,
+        explanation: "BSEB कक्षा 9 गणित में कुल 100 अंक (संख्या पद्धति 10, बीजगणित 25, निर्देशांक ज्यामिति 10, ज्यामिति 30, क्षेत्रमिति 15, सांख्यिकी-प्रायिकता 10) होते हैं।"
+      }
+    ],
+    subjectiveQuestions: []
+  });
+
+  // 1. Chapters 1–6 from bsebClass9MathSubjective50 + CHAPTER_METADATA_MAP
+  const mapByCh = {};
   bsebClass9MathSubjective50.chapters.forEach(hch => {
     const chNum = hch.chapterNumber;
     if (chNum === 14) return;
@@ -270,17 +507,17 @@ export function buildCompleteBsebClass9Maths() {
       solution: q.solution
     }));
 
-    arrangedChapters.push({
+    mapByCh[chNum] = {
       id: `ch-math-9-ch${chNum}`,
       number: chNum,
       title: `अध्याय ${chNum}: ${hch.chapterName}`,
       duration: meta.duration,
       weightage: meta.weightage,
-      pdfFileName: `Class9_Maths_BSEB_Ch${chNum}_${meta.englishTitle.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,
-      downloadUrl: `./class-9-math-subjective-50.html#ch${chNum}`,
-      downloadName: `Class9_Maths_BSEB_Ch${chNum}_HOTS.html`,
-      pdfPages: 6,
-      pdfSize: "1.2 MB",
+      pdfFileName: `BSEB_Class_9_Math_Hindi_Book.pdf`,
+      downloadUrl: `./class-9-math-book-hindi.html#ch${chNum}`,
+      downloadName: `Class9_Maths_BSEB_Ch${chNum}_Notes.html`,
+      pdfPages: 12,
+      pdfSize: "1.14 MB",
       notes: {
         summary: meta.summary,
         keyConcepts: meta.keyConcepts,
@@ -288,10 +525,14 @@ export function buildCompleteBsebClass9Maths() {
       },
       objectiveQuestions: meta.mcqs,
       subjectiveQuestions: subjQuestions
-    });
+    };
   });
 
-  // 2. Build Chapter 14: Statistics (full chapter from bsebClass9Ch14.js + 5 HOTS questions Q46–Q50)
+  [1, 2, 3, 4, 5, 6].forEach(n => { if (mapByCh[n]) arrangedChapters.push(mapByCh[n]); });
+  GEOMETRY_CH7_TO_11.forEach(ch => arrangedChapters.push(ch));
+  [12, 13].forEach(n => { if (mapByCh[n]) arrangedChapters.push(mapByCh[n]); });
+
+  // 2. Chapter 14: Statistics
   const baseCh14 = CH14_SUBJECT.chapters[0];
   const hotsCh14Obj = bsebClass9MathSubjective50.chapters.find(c => c.chapterNumber === 14);
   const hotsCh14Questions = (hotsCh14Obj ? hotsCh14Obj.questions : []).map(q => ({
@@ -313,7 +554,7 @@ export function buildCompleteBsebClass9Maths() {
     subjectiveQuestions: [...baseCh14.subjectiveQuestions, ...hotsCh14Questions]
   });
 
-  // 3. Build Chapter 15: Probability (from bsebClass9Ch15.js + full notes)
+  // 3. Chapter 15: Probability
   const ch15Mcqs = (bsebClass9Ch15.mcqs || []).map((m, idx) => ({
     id: `q-9m15-${m.id || (idx + 1)}`,
     question: m.question,
@@ -328,21 +569,7 @@ export function buildCompleteBsebClass9Maths() {
       type: `${s.type || 'लघु उत्तरीय'} (Board Q#${idx + 1})`,
       question: s.question,
       solution: s.solution
-    })),
-    {
-      id: "sq-9m15-4",
-      type: "लघु उत्तरीय (3 Marks)",
-      question: "एक सिक्के को 1000 बार उछाला जाता है और निम्नलिखित बारंबारताएँ प्राप्त होती हैं: चित (Head): 455, पट (Tail): 545। प्रत्येक घटना की प्रायिकता ज्ञात कीजिए।",
-      answer: "P(चित) = 0.455, P(पट) = 0.545",
-      solution: "कुल अभिप्रयोगों की संख्या (n) = 1000\n1. चित आने की प्रायिकता P(E) = 455 / 1000 = 0.455\n2. पट आने की प्रायिकता P(F) = 545 / 1000 = 0.545\nसत्यापन: P(E) + P(F) = 0.455 + 0.545 = 1.000।"
-    },
-    {
-      id: "sq-9m15-5",
-      type: "दीर्घ उत्तरीय (5 Marks)",
-      question: "एक पासे को 500 बार फेंका गया और परिणामों की बारंबारताएँ इस प्रकार दर्ज की गईं: परिणाम 1 (80 बार), 2 (75 बार), 3 (90 बार), 4 (85 बार), 5 (85 बार), 6 (85 बार)। विषम संख्या (1, 3, 5) आने की प्रायिकता ज्ञात कीजिए।",
-      answer: "51/100 = 0.51",
-      solution: "कुल अभिप्रयोग (n) = 500। विषम संख्याएँ (1, 3, 5) आने की कुल बारंबारता = 80 + 90 + 85 = 255।\nअतः P(विषम संख्या) = 255 / 500 = 51 / 100 = 0.51।"
-    }
+    }))
   ];
 
   arrangedChapters.push({
@@ -357,33 +584,23 @@ export function buildCompleteBsebClass9Maths() {
     pdfPages: 8,
     pdfSize: "1.6 MB",
     notes: {
-      summary: bsebClass9Ch15.description || "गणित में अनिश्चितता की माप को प्रायिकता (Probability) कहा जाता है। कक्षा 9 के पाठ्यक्रम में आनुभविक प्रायिकता (Empirical Probability) का अध्ययन किया जाता है।",
+      summary: bsebClass9Ch15.description || "गणित में अनिश्चितता की माप को प्रायिकता (Probability) कहा जाता है।",
       keyConcepts: [
         {
-          heading: "1. प्रायिकता का परिचय एवं महत्वपूर्ण शब्दावली (Key Definitions)",
-          body: "• प्रयोग (Experiment): कोई भी सुनियोजित क्रिया जिसका कोई स्पष्ट परिणाम प्राप्त होता है।\n• यादृच्छिक प्रयोग (Random Experiment): ऐसा प्रयोग जिसके सभी संभावित परिणाम पहले से ज्ञात हों, परंतु किसी परीक्षण में कौन-सा परिणाम आएगा यह निश्चित रूप से न कहा जा सके।\n• अभिप्रयोग (Trial): किसी प्रयोग को एक बार संपन्न करना (जैसे सिक्का उछालना या पासा फेंकना)।\n• घटना (Event, E): किसी प्रयोग के एक या अधिक परिणामों का संग्रह।"
-        },
-        {
-          heading: "2. आनुभविक प्रायिकता का सूत्र एवं मुख्य गुणधर्म (Formula & Properties)",
-          body: "• सूत्र: P(E) = (अभिप्रयोगों की संख्या जिनमें घटना घटी है m) / (अभिप्रयोगों की कुल संख्या n) = m / n\n• मान की सीमा: किसी भी घटना E की प्रायिकता सदैव 0 और 1 के बीच होती है: 0 ≤ P(E) ≤ 1।\n• असंभव घटना की प्रायिकता = 0 तथा निश्चित घटना की प्रायिकता = 1 होती है।\n• पूरक घटना: P(E) + P(E नहीं) = 1।"
-        },
-        {
-          heading: "3. सिक्के, पासे, थैले की गेंदें एवं ताश के पत्ते (Coins, Dice, Balls & Cards)",
-          body: "• सिक्का: 2 पहलू (चित Head, पट Tail)।\n• पासा: 6 फलक (1, 2, 3, 4, 5, 6); सम = {2,4,6}, विषम = {1,3,5}, अभाज्य = {2,3,5}।\n• ताश की गड्डी (52 पत्ते): 26 लाल (13 पान + 13 ईंट) और 26 काले (13 हुकुम + 13 चिड़ी); कुल 12 तस्वीर वाले पत्ते (Face Cards) और 4 इक्के (Aces)।"
+          heading: "1. प्रायिकता का सूत्र एवं मुख्य गुणधर्म",
+          body: "• P(E) = अनुकूल परिणामों की संख्या / कुल अभिप्रयोगों की संख्या।\n• 0 ≤ P(E) ≤ 1, P(निश्चित) = 1, P(असंभव) = 0, P(E) + P(E नहीं) = 1।"
         }
       ],
       formulas: [
-        "आनुभविक प्रायिकता P(E) = m / n = (अनुकूल परिणामों की संख्या) / (अभिप्रयोगों की कुल संख्या)",
-        "प्रायिकता की सीमा: 0 ≤ P(E) ≤ 1 (प्रायिकता कभी ऋणात्मक या 1 से अधिक नहीं हो सकती)",
-        "निश्चित घटना की प्रायिकता = 1  |  असंभव घटना की प्रायिकता = 0",
-        "पूरक घटना का नियम: P(E) + P(E नहीं) = 1  ⇒  P(E नहीं) = 1 - P(E)"
+        "आनुभविक प्रायिकता P(E) = m / n",
+        "0 ≤ P(E) ≤ 1  |  P(E) + P(E नहीं) = 1"
       ]
     },
     objectiveQuestions: ch15Mcqs,
     subjectiveQuestions: ch15Subj
   });
 
-  // 4. Build Master 50 HOTS Question Bank Chapter (All 50 questions in one place)
+  // 4. Master 50 HOTS Question Bank
   const all50Questions = [];
   bsebClass9MathSubjective50.chapters.forEach(hch => {
     hch.questions.forEach(q => {
@@ -411,18 +628,11 @@ export function buildCompleteBsebClass9Maths() {
     pdfPages: 18,
     pdfSize: "3.2 MB",
     notes: {
-      summary: "यह विशेष मास्टर प्रश्न बैंक बिहार बोर्ड (BSEB) कक्षा 9वीं गणित के अध्याय 1 से 6 तथा अध्याय 12 से 14 के सभी 50 कठिन सब्जेक्टिव प्रश्नों (HOTS) और उनके चरणबद्ध हल को एक साथ प्रस्तुत करता है।",
-      keyConcepts: [
-        {
-          heading: "अध्यायवार 50 कठिन प्रश्न वितरण (Chapter-Wise Breakdown: Q1 – Q50)",
-          body: "• अध्याय 1: संख्या पद्धति (Q1 – Q7)\n• अध्याय 2: बहुपद — विशेष गुणनखंड सूत्र (Q8 – Q18)\n• अध्याय 3: निर्देशांक ज्यामिति (Q19 – Q22)\n• अध्याय 4: दो चरों वाले रैखिक समीकरण (Q23 – Q27)\n• अध्याय 5: यूक्लिड की ज्यामिति का परिचय (Q28 – Q30)\n• अध्याय 6: रेखाएँ और कोण (Q31 – Q35)\n• अध्याय 12: हीरोन का सूत्र (Q36 – Q40)\n• अध्याय 13: पृष्ठीय क्षेत्रफल और आयतन (Q41 – Q45)\n• अध्याय 14: सांख्यिकी (Q46 – Q50)"
-        }
-      ],
+      summary: "यह विशेष मास्टर प्रश्न बैंक बिहार बोर्ड (BSEB) कक्षा 9वीं गणित के सभी 50 कठिन सब्जेक्टिव प्रश्नों (HOTS) और उनके चरणबद्ध हल को एक साथ प्रस्तुत करता है।",
+      keyConcepts: [],
       formulas: [
-        "x² + 1/x² = (x + 1/x)² - 2  |  x³ + 1/x³ = (x + 1/x)³ - 3(x + 1/x)",
-        "a³ + b³ + c³ - 3abc = (a + b + c)(a² + b² + c² - ab - bc - ca)",
-        "हीरोन का सूत्र: Δ = √[s(s - a)(s - b)(s - c)]",
-        "कल्पित माध्य विधि: x̄ = a + (∑ f_i d_i) / (∑ f_i)"
+        "x² + 1/x² = (x + 1/x)² - 2  |  a³ + b³ + c³ - 3abc = (a+b+c)(a²+b²+c²-ab-bc-ca)",
+        "हीरोन का सूत्र: Δ = √[s(s - a)(s - b)(s - c)]"
       ]
     },
     objectiveQuestions: [...baseCh14.objectiveQuestions.slice(0, 5), ...ch15Mcqs.slice(0, 5)],
@@ -435,14 +645,14 @@ export function buildCompleteBsebClass9Maths() {
     icon: "Calculator",
     code: "MAT-09-BSEB",
     chaptersCount: arrangedChapters.length,
-    description: "अध्याय 1–6 (संख्या पद्धति, बहुपद, ज्यामिति), अध्याय 12–13 (क्षेत्रमिति), अध्याय 14 (सांख्यिकी), अध्याय 15 (प्रायिकता) एवं 50 HOTS सब्जेक्टिव प्रश्न बैंक",
+    description: "205-पेज संपूर्ण हिंदी PDF पुस्तक + सभी 15 अध्याय (संख्या पद्धति से प्रायिकता तक) के नोट्स, सूत्र एवं 50 HOTS प्रश्न बैंक",
     chapters: arrangedChapters
   };
 }
 
 export const BSEB_CLASS9_MATHS_MOCK_TEST = {
   id: "test-bseb-9-maths",
-  title: "Class 9 Mathematics (BSEB) — Statistics, Probability & Algebra Board Mock Test",
+  title: "Class 9 Mathematics (BSEB) — Complete Board Mock Test",
   classLabel: "Class 9 (BSEB)",
   subject: "Mathematics (गणित — बिहार बोर्ड)",
   durationSeconds: 900,
@@ -456,79 +666,23 @@ export const BSEB_CLASS9_MATHS_MOCK_TEST = {
       question: "आँकड़ों 14, 25, 14, 28, 18, 17, 18, 14, 23, 22, 14, 18 का बहुलक (Mode) क्या होगा?",
       options: ["14", "18", "22", "25"],
       correctIndex: 0,
-      explanation: "दिए गए आँकड़ों में 14 सबसे अधिक बार (4 बार) आया है, इसलिए बहुलक (Mode) = 14 है।"
+      explanation: "14 सबसे अधिक बार (4 बार) आया है, इसलिए बहुलक = 14।"
     },
     {
       id: "mt9-2",
-      section: "अध्याय 14: सांख्यिकी",
-      question: "आँकड़ों 12, 17, 81, 26, 38, 42, 57, 62 का परिसर (Range) क्या है?",
-      options: ["62", "69", "50", "81"],
+      section: "अध्याय 15: प्रायिकता",
+      question: "किसी निश्चित घटना (Sure Event) की प्रायिकता क्या होती है?",
+      options: ["0", "1", "0.5", "अनंत"],
       correctIndex: 1,
-      explanation: "परिसर (Range) = उच्चतम मान - न्यूनतम मान = 81 - 12 = 69।"
+      explanation: "निश्चित घटना की प्रायिकता सदैव 1 होती है।"
     },
     {
       id: "mt9-3",
-      section: "अध्याय 14: सांख्यिकी",
-      question: "यदि किसी बंटन का माध्य (Mean) = 15 और माध्यक (Median) = 16 हो, तो आनुभविक सूत्र से बहुलक (Mode) क्या होगा?",
-      options: ["17", "18", "15.5", "20"],
-      correctIndex: 1,
-      explanation: "बहुलक (Mode) = 3 × माध्यक - 2 × माध्य = 3(16) - 2(15) = 48 - 30 = 18।"
-    },
-    {
-      id: "mt9-4",
-      section: "अध्याय 14: सांख्यिकी",
-      question: "आरोही क्रम में व्यवस्थित आँकड़ों 29, 32, 48, 50, x, x+2, 72, 78, 84, 95 का माध्यक (Median) 63 है, तो x का मान क्या है?",
-      options: ["60", "61", "62", "63"],
-      correctIndex: 2,
-      explanation: "यहाँ कुल प्रेक्षण n = 10 (सम) हैं। माध्यक = (x + x + 2)/2 = 63 ⇒ x + 1 = 63 ⇒ x = 62।"
-    },
-    {
-      id: "mt9-5",
-      section: "अध्याय 15: प्रायिकता",
-      question: "किसी निश्चित या अवश्यंभावी घटना (Sure Event) की प्रायिकता क्या होती है?",
-      options: ["0", "1", "0.5", "अनंत"],
-      correctIndex: 1,
-      explanation: "जो घटना निश्चित रूप से घटती है, उसकी प्रायिकता सदैव 1 होती है।"
-    },
-    {
-      id: "mt9-6",
-      section: "अध्याय 15: प्रायिकता",
-      question: "यदि किसी मैच में जीतने की प्रायिकता 0.62 है, तो हारने की प्रायिकता क्या होगी?",
-      options: ["0.62", "0.38", "0.48", "1"],
-      correctIndex: 1,
-      explanation: "P(हार) = 1 - P(जीत) = 1 - 0.62 = 0.38।"
-    },
-    {
-      id: "mt9-7",
-      section: "अध्याय 15: प्रायिकता",
-      question: "एक सिक्के को 1000 बार उछालने पर 455 बार चित प्राप्त होता है। चित आने की आनुभविक प्रायिकता क्या होगी?",
-      options: ["0.455", "0.545", "0.5", "1"],
-      correctIndex: 0,
-      explanation: "P(चित) = 455 / 1000 = 0.455।"
-    },
-    {
-      id: "mt9-8",
       section: "अध्याय 2: बहुपद",
       question: "यदि a + b + c = 0 हो, तो a³ + b³ + c³ का मान किसके बराबर होता है?",
       options: ["0", "abc", "3abc", "a² + b² + c²"],
       correctIndex: 2,
-      explanation: "यदि a + b + c = 0 हो, तो सर्वसमिका से a³ + b³ + c³ = 3abc होता है।"
-    },
-    {
-      id: "mt9-9",
-      section: "अध्याय 1: संख्या पद्धति",
-      question: "1 / (√3 - √2) के हर का परिमेयकरण करने पर प्राप्त मान क्या होगा?",
-      options: ["√3 - √2", "√3 + √2", "(√3 + √2)/5", "1"],
-      correctIndex: 1,
-      explanation: "(√3 + √2) / ((√3)² - (√2)²) = (√3 + √2) / (3 - 2) = √3 + √2।"
-    },
-    {
-      id: "mt9-10",
-      section: "अध्याय 13: क्षेत्रमिति",
-      question: "एक शंकु के आधार की त्रिज्या 7 cm और ऊँचाई 24 cm है। इसकी तिर्यक ऊँचाई (Slant Height, l) क्या होगी?",
-      options: ["25 cm", "26 cm", "31 cm", "17 cm"],
-      correctIndex: 0,
-      explanation: "तिर्यक ऊँचाई l = √(r² + h²) = √(7² + 24²) = √(49 + 576) = √625 = 25 cm।"
+      explanation: "यदि a + b + c = 0 हो, तो a³ + b³ + c³ = 3abc।"
     }
   ]
 };
@@ -537,7 +691,7 @@ export function enrichExamPulseCurriculum(mockData) {
   const completeMaths9 = buildCompleteBsebClass9Maths();
   const class9 = mockData.classes.find(c => c.id === 'class-9');
   if (class9) {
-    class9.boardTag = 'BSEB / CBSE • Hindi + English';
+    class9.boardTag = 'BSEB / CBSE • Hindi + English (205p Book)';
     class9.subjects = [completeMaths9, ...class9.subjects.filter(s => s.id !== 'maths-9')];
     class9.subjectsCount = class9.subjects.length;
     class9.chaptersCount = class9.subjects.reduce((acc, s) => acc + (s.chapters ? s.chapters.length : 0), 0);
